@@ -10,11 +10,11 @@
     "07_strategy": "done",
     "08_validation": "done",
     "09_plan": "done",
-    "10_deliverable": "in_progress",
+    "10_deliverable": "waiting_human",
     "11_decisions": "todo"
   },
   "next_action": "Шаг 10: итоговый документ deliverables/strategy.md из work/01–09, red-team перед сдачей, sfp check, приёмка руководителем; поправить в 05_options оценку 4+3 «+1 000…1 500» на C-104",
   "open_questions": [],
-  "blocked_on_human": null,
-  "updated": "2026-11-19T18:55:10+00:00"
+  "blocked_on_human": "Принять или исправить deliverables/strategy.md; отдельно — решить, приемлема ли цена пользы ~1 270 руб./перебой за 3 года [C-112]",
+  "updated": "2026-11-19T19:03:55+00:00"
 }

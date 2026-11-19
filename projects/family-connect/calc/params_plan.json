@@ -388,6 +388,16 @@
    "type": "assumption",
    "source": "C-070 (возражение red-team S-012)",
    "note": "снижение оттока номеров в группах плательщиков (и так удерживаются платежами)"
+  },
+  "charges_consent": {
+   "value": 0.5,
+   "low": 0.2,
+   "high": 0.8,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-107",
+   "note": "участники, открывшие организатору/плательщику доступ к балансу и начислениям (отдельно от остатка)"
   }
  },
  "economics": {
@@ -532,6 +542,70 @@
      }
     ],
     "dev_cost": "pm_alert * pm_cost"
+   },
+   "alert_plan_consent": {
+    "title": "2. Сигнал — по плану, сигнал о балансе только при отдельном согласии на начисления",
+    "description": "Разработка в Q2 (3 чел.-мес. [C-018]); пилот 50 % подходящих групп с июня (месяц 6); расширение с месяца 12.",
+    "streams": [
+     {
+      "name": "удержание: меньше ограничений (пилот)",
+      "type": "retention",
+      "covered_stock": "(groups_start * eligible * pilot_share) * ppg",
+      "covered_inflow": 0,
+      "start_month": 6,
+      "churn_base": "churn",
+      "churn_reduction": "thr_share*thr_red*(churn_mult-1)/(1+thr_share*(churn_mult-1))"
+     },
+     {
+      "name": "удержание: меньше ограничений (расширение)",
+      "type": "retention",
+      "covered_stock": "(groups_start * eligible * (1 - pilot_share)) * ppg",
+      "covered_inflow": "(groups_no_change_eoy - groups_start) / 12 * eligible * ppg",
+      "start_month": 12,
+      "churn_base": "churn",
+      "churn_reduction": "thr_share*thr_red*(churn_mult-1)/(1+thr_share*(churn_mult-1))"
+     },
+     {
+      "name": "предотвращённые приостановки (пилот)",
+      "type": "lapse_prevention",
+      "numbers": "(groups_start * eligible * pilot_share * ppg) * charges_consent",
+      "lapse_rate": "pay_lapse",
+      "prevented_share": "lapse_prevented",
+      "months_saved": "part_months_saved",
+      "start_month": 6
+     },
+     {
+      "name": "предотвращённые приостановки (расширение)",
+      "type": "lapse_prevention",
+      "numbers": "(groups_no_change_eoy * eligible * ppg - groups_start * eligible * pilot_share * ppg) * charges_consent",
+      "lapse_rate": "pay_lapse",
+      "prevented_share": "lapse_prevented",
+      "months_saved": "part_months_saved",
+      "start_month": 12
+     },
+     {
+      "name": "экономия поддержки",
+      "type": "monthly_gp",
+      "rub_per_month": "groups_no_change_eoy * eligible * ppg * (thr_share*thr_red + pay_lapse*lapse_prevented) * call_share * contact_cost * var_share",
+      "start_month": 12
+     }
+    ],
+    "costs": [
+     {
+      "name": "SMS-сигналы",
+      "rub_per_unit": "sms_cost",
+      "units_per_month": "groups_no_change_eoy * eligible * event_share * sms_share",
+      "start_month": 12
+     },
+     {
+      "name": "SMS-сигналы (пилот)",
+      "rub_per_unit": "sms_cost",
+      "units_per_month": "groups_start * eligible * pilot_share * event_share * sms_share",
+      "start_month": 6,
+      "end_month": 11
+     }
+    ],
+    "dev_cost": "pm_alert * pm_cost"
    }
   }
  },
@@ -587,6 +661,12 @@
     "x_owners": 0
    },
    "alert_plan_early": {
+    "x_groups": 0,
+    "x_active_share": "(1 - 5000/8000) * eligible * event_share * act_alert",
+    "x_activation": "(1 - 0.45) * eligible * event_share * 0.5 * act_alert",
+    "x_owners": 0
+   },
+   "alert_plan_consent": {
     "x_groups": 0,
     "x_active_share": "(1 - 5000/8000) * eligible * event_share * act_alert",
     "x_activation": "(1 - 0.45) * eligible * event_share * 0.5 * act_alert",
