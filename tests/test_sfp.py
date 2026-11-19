@@ -105,3 +105,15 @@ def test_search_finds_by_meaning_variant(project):
     (project / "work" / "03_research.md").write_text("## Удержание\nОтток участников семейных групп", encoding="utf-8")
     out = run("search", "семейная группа отток").stdout
     assert "03_research.md" in out
+
+
+def test_export_html_with_ref_tooltips(project):
+    sid = add_brief(project)
+    run("claim", "add", "Активных групп 4 000", "--type", "fact", "--sources", sid)
+    doc = project / "deliverables" / "strategy.md"
+    doc.write_text("# Тест\n\n| a | b |\n|---|---|\n| **x** | см. [C-001] |\n\n- пункт `код`\n", encoding="utf-8")
+    out = run("export").stdout.strip()
+    html = Path(out).read_text(encoding="utf-8")
+    assert out.endswith("strategy.html")
+    assert "<table>" in html and "<strong>x</strong>" in html and "<code>код</code>" in html
+    assert 'class="ref" title="fact: Активных групп 4 000"' in html

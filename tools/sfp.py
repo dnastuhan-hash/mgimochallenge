@@ -904,6 +904,120 @@ def cmd_route(a):
     print(f"Порог качества evaluator: {cfg.get('quality_threshold')}; ниже — `sfp route --escalate {r.get('model')}`")
 
 
+
+# ----------------------------------------------------------------- export
+def _md_inline(t: str, refs: dict) -> str:
+    import html as _h
+    codes: list[str] = []
+    t = re.sub(r"`([^`]+)`", lambda m: codes.append(m.group(1)) or f"\x00{len(codes)-1}\x00", t)
+    t = _h.escape(t, quote=False)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?!\w)", r"<em>\1</em>", t)
+    t = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', t)
+
+    def ref(m):
+        rid = m.group(0)
+        tip = refs.get(rid)
+        return f'<span class="ref" title="{_h.escape(tip)}">{rid}</span>' if tip else rid
+    t = re.sub(r"\b[CSD]-\d{3}\b", ref, t)
+    return re.sub("\x00(\\d+)\x00", lambda m: f"<code>{_h.escape(codes[int(m.group(1))])}</code>", t)
+
+
+def md_to_html(md: str, refs: dict | None = None) -> str:
+    """Минимальный Markdown → HTML (заголовки, абзацы, списки, таблицы, цитаты, код, hr) без зависимостей."""
+    import html as _h
+    refs = refs or {}
+    out: list[str] = []
+    lines = md.splitlines()
+    i = 0
+    para: list[str] = []
+
+    def flush():
+        if para:
+            out.append("<p>" + _md_inline(" ".join(x.strip() for x in para), refs) + "</p>")
+            para.clear()
+    while i < len(lines):
+        ln = lines[i]
+        st = ln.strip()
+        if st.startswith("```"):
+            flush(); j = i + 1; buf = []
+            while j < len(lines) and not lines[j].strip().startswith("```"):
+                buf.append(lines[j]); j += 1
+            out.append("<pre><code>" + _h.escape("\n".join(buf)) + "</code></pre>"); i = j + 1; continue
+        if not st:
+            flush(); i += 1; continue
+        if re.fullmatch(r"-{3,}|\*{3,}", st):
+            flush(); out.append("<hr>"); i += 1; continue
+        m = re.match(r"(#{1,6})\s+(.*)", st)
+        if m:
+            flush(); n = len(m.group(1)); out.append(f"<h{n}>{_md_inline(m.group(2), refs)}</h{n}>"); i += 1; continue
+        if st.startswith("|") and i + 1 < len(lines) and re.fullmatch(r"\|?\s*:?-{2,}.*", lines[i + 1].strip()):
+            flush()
+            cells = lambda r: [c.strip() for c in r.strip().strip("|").split("|")]
+            head = cells(ln); i += 2; rows = []
+            while i < len(lines) and lines[i].strip().startswith("|"):
+                rows.append(cells(lines[i])); i += 1
+            h = "".join(f"<th>{_md_inline(c, refs)}</th>" for c in head)
+            b = "".join("<tr>" + "".join(f"<td>{_md_inline(c, refs)}</td>" for c in r) + "</tr>" for r in rows)
+            out.append(f'<div class="tw"><table><thead><tr>{h}</tr></thead><tbody>{b}</tbody></table></div>'); continue
+        if st.startswith(">"):
+            flush(); buf = []
+            while i < len(lines) and lines[i].strip().startswith(">"):
+                buf.append(lines[i].strip()[1:].strip()); i += 1
+            out.append("<blockquote>" + _md_inline(" ".join(buf), refs) + "</blockquote>"); continue
+        m = re.match(r"(\s*)([-*]|\d+\.)\s+(.*)", ln)
+        if m:
+            flush(); tag = "ol" if m.group(2)[0].isdigit() else "ul"; items = []
+            while i < len(lines):
+                mm = re.match(r"(\s*)([-*]|\d+\.)\s+(.*)", lines[i])
+                if mm:
+                    items.append(mm.group(3)); i += 1
+                elif lines[i].strip() and lines[i].startswith("  ") and items:
+                    items[-1] += " " + lines[i].strip(); i += 1
+                else:
+                    break
+            out.append(f"<{tag}>" + "".join(f"<li>{_md_inline(x, refs)}</li>" for x in items) + f"</{tag}>"); continue
+        para.append(ln); i += 1
+    flush()
+    return "\n".join(out)
+
+
+EXPORT_CSS = """:root{--bg:#fff;--fg:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--acc:#0a5bd3;--head:#f5f5f7}
+@media (prefers-color-scheme:dark){:root{--bg:#161618;--fg:#ececf0;--mut:#a1a1a6;--line:#3a3a3e;--acc:#6aa6ff;--head:#222226}}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,Segoe UI,Roboto,sans-serif;max-width:980px;margin:0 auto;padding:24px 16px}
+h1{font-size:1.7em}h2{margin-top:2em;border-bottom:1px solid var(--line);padding-bottom:.2em}h3{margin-top:1.5em}
+.tw{overflow-x:auto}table{border-collapse:collapse;margin:1em 0;font-size:.92em}th,td{border:1px solid var(--line);padding:6px 8px;vertical-align:top;text-align:left}
+th{background:var(--head)}code{background:var(--head);padding:0 4px;border-radius:4px}pre{background:var(--head);padding:12px;overflow-x:auto}
+blockquote{border-left:3px solid var(--acc);margin:1em 0;padding:.2em 1em;color:var(--mut)}a{color:var(--acc)}
+.ref{color:var(--acc);border-bottom:1px dotted var(--acc);cursor:help}footer{color:var(--mut);font-size:.85em;margin-top:3em}"""
+
+
+def cmd_export(a):
+    """Итоговый документ (или любой .md проекта) → автономный HTML рядом с исходником."""
+    import html as _h
+    pr = active_project(a.project)
+    src = Path(a.file) if a.file else pr.p("deliverables/strategy.md")
+    if not src.is_absolute() and not src.exists():
+        src = pr.dir / src
+    if not src.exists():
+        sys.exit(f"нет файла {src}")
+    refs = {c["id"]: f"{c['type']}: {c['text']}" + ("" if c.get("status") == "active" else f" [{c.get('status')}]")
+            for c in pr.claims()}
+    refs |= {s["id"]: f"{s.get('kind')}: {s.get('title')}" for s in pr.sources()}
+    refs |= {d["id"]: f"решение: {d.get('title')} — {d.get('choice') or ''}" for d in pr.decisions()}
+    md = src.read_text(encoding="utf-8")
+    title = next((l.lstrip("# ").strip() for l in md.splitlines() if l.startswith("# ")), src.stem)
+    body = md_to_html(md, refs)
+    now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    doc = (f'<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+           f"<title>{_h.escape(title)}</title><style>{EXPORT_CSS}</style></head><body>{body}"
+           f"<footer>Экспорт: sfp export, {now}. Наведите на [C-…]/[S-…]/[D-…], чтобы увидеть тип и текст записи реестра.</footer></body></html>")
+    out = Path(a.out) if a.out else src.with_suffix(".html")
+    out.write_text(doc, encoding="utf-8")
+    pr.log("action", f"export {src.name} → {out.name}")
+    print(out)
+
+
 # ----------------------------------------------------------------- argparse
 def build_parser():
     p = argparse.ArgumentParser(prog="sfp", description="Стратег Фабрики продуктов — состояние, реестры, проверки")
@@ -957,6 +1071,8 @@ def build_parser():
     s.add_argument("--model"); s.add_argument("--tool"); s.add_argument("--tokens-in", type=int); s.add_argument("--tokens-out", type=int)
     s.add_argument("--cost-usd", type=float); s.add_argument("--minutes", type=float); s.set_defaults(f=cmd_log)
     s = sub.add_parser("cost", help="время и стоимость по шагам"); s.set_defaults(f=cmd_cost)
+    s = sub.add_parser("export", help="Markdown-документ → автономный HTML (по умолчанию deliverables/strategy.md)")
+    s.add_argument("file", nargs="?"); s.add_argument("--out"); s.set_defaults(f=cmd_export)
     s = sub.add_parser("history", help="журнал действий"); s.add_argument("-n", type=int, default=30); s.add_argument("--kind"); s.set_defaults(f=cmd_history)
     s = sub.add_parser("search", help="поиск по знаниям и проекту"); s.add_argument("query"); s.add_argument("-k", type=int, default=8); s.set_defaults(f=cmd_search)
     s = sub.add_parser("route", help="выбрать процесс, исполнителя и модель для задачи")
