@@ -462,3 +462,7 @@
 {"ts": "2026-11-19T20:10:16+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:10:33+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/eval/protocol.md", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:10:51+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/eval/comparison.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:11:04+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Fix comparison numbers, commit", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:11:10+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Gather evidence for capability claims", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:11:34+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/capabilities.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:11:38+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Count superseded claims, log lines, commands", "session": "cd6ec98c"}
