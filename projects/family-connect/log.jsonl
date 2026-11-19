@@ -220,3 +220,44 @@
 {"ts": "2026-11-19T18:39:35+00:00", "kind": "tool", "stage": "07_strategy", "tool": "Bash", "summary": "description=Apply evaluator fixes to both strategy files", "session": "cd6ec98c"}
 {"ts": "2026-11-19T18:39:44+00:00", "kind": "action", "stage": "07_strategy", "summary": "Шаг 06: записаны D-001 (вариант 2) и D-002 (цель ВП — к финансам). Шаг 07: продуктовая и коммуникационная стратегии, охват reach.py [S-013], C-076…C-082; evaluator (haiku) 0.85 pass, 9 доработок внесены (шкала пилота ≥4/≥3 п.п., ссылки на год 3, обещания О11–О12, путь владельца и салона)", "model": "opus", "tokens_in": 120000, "tokens_out": 18000, "cost_usd": 0.84}
 {"ts": "2026-11-19T18:39:44+00:00", "kind": "stage", "stage": "08_validation", "summary": "07_strategy → done"}
+{"ts": "2026-11-19T18:40:59+00:00", "kind": "human", "stage": "08_validation", "summary": "Руководитель: продолжить к шагу 08"}
+{"ts": "2026-11-19T18:40:59+00:00", "kind": "stage", "stage": "08_validation", "summary": "08_validation → in_progress"}
+{"ts": "2026-11-19T18:41:10+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Show sample_size script options", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:41:21+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Run pilot sample-size scenarios into calc file", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:41:53+00:00", "kind": "source", "stage": "08_validation", "summary": "S-014 Пилот шага 08: сценарии выборки и набора (sample_size.py)"}
+{"ts": "2026-11-19T18:41:54+00:00", "kind": "claim", "stage": "08_validation", "summary": "C-083 [forecast] Итоговый анализ пилота: при наборе 25 недель (до середины Q3) и 135 впервые подходящих гру"}
+{"ts": "2026-11-19T18:41:54+00:00", "kind": "claim", "stage": "08_validation", "summary": "C-084 [forecast] Промежуточный анализ конца Q2 (13 недель, ~1 755 групп) с защищённым порогом α=0,005 обнар"}
+{"ts": "2026-11-19T18:41:54+00:00", "kind": "claim", "stage": "08_validation", "summary": "C-085 [inference] Решение конца Q2 о расширении по эффекту возможно только при сильном эффекте (≥ 5,1 п.п.);"}
+{"ts": "2026-11-19T18:41:54+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Register pilot calc source and claims", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:42:03+00:00", "kind": "revision", "stage": "08_validation", "summary": "C-085 → superseded (новое C-086): уточнён срок: 25 недель набора с 1 апреля заканчиваются в конце Q3"}
+{"ts": "2026-11-19T18:42:03+00:00", "kind": "revision", "stage": "08_validation", "summary": "C-083 → superseded (новое C-087): уточнён срок: 25 недель с 1 апреля = до конца Q3, а не середины"}
+{"ts": "2026-11-19T18:42:03+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Supersede claims with corrected timing", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:42:08+00:00", "kind": "revision", "stage": "08_validation", "summary": "C-086 → superseded (новое C-088): основание C-083 заменено на C-087"}
+{"ts": "2026-11-19T18:42:08+00:00", "kind": "decision", "stage": "08_validation", "summary": "D-001 обновлено:  Шаг 08 [C-084, C-087, C-088]: критерий конца Q2 «≥ 4 п.п.» заменён — промежуточно расширяем только при ≥ 5,1 п.п. (α=0,005); итог по пользе −3 п.п. — после набора 25 недель (~22 сентября), решение в начале Q4. Срок пересмотра по пользе сдвигается с «середины Q3» на начало Q4"}
+{"ts": "2026-11-19T18:42:08+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Fix dependency, annotate D-001, check", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:42:50+00:00", "kind": "tool", "stage": "08_validation", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/work/08_validation.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:42:57+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Update §9 table, check for stale timing", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:43:04+00:00", "kind": "tool", "stage": "08_validation", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/work/08_validation.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:43:04+00:00", "kind": "tool", "stage": "08_validation", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/knowledge/experiment-design.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:43:04+00:00", "kind": "tool", "stage": "08_validation", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/calc/pilot08_out.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:43:04+00:00", "kind": "tool", "stage": "08_validation", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/calc/sample_size_out.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:43:04+00:00", "kind": "tool", "stage": "08_validation", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/claims.jsonl", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:44:05+00:00", "kind": "tool", "stage": "08_validation", "tool": "SubagentHandback", "summary": "", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:44:05+00:00", "kind": "tool", "stage": "08_validation", "tool": "Agent", "summary": "subagent_type=evaluator", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:44:18+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Compute overall alpha and extension sample", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:44:27+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Find final threshold keeping alpha 0.05", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:44:35+00:00", "kind": "source", "stage": "08_validation", "summary": "S-015 α при промежуточном и итоговом анализе (alpha_hp.py)"}
+{"ts": "2026-11-19T18:44:35+00:00", "kind": "claim", "stage": "08_validation", "summary": "C-089 [forecast] Схема двух анализов: промежуточный порог α=0,005 (z=2,81) и итоговый z=1,98 (α≈0,048) дают"}
+{"ts": "2026-11-19T18:44:35+00:00", "kind": "claim", "stage": "08_validation", "summary": "C-090 [forecast] Если итог не значим, но интервал допускает ≥ 3 п.п., продление на минимальный эффект 2,5 п"}
+{"ts": "2026-11-19T18:44:35+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Register alpha calc and extension forecast", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:44:42+00:00", "kind": "revision", "stage": "08_validation", "summary": "C-090 → superseded (новое C-091): диапазон по темпу набора"}
+{"ts": "2026-11-19T18:44:42+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Add range to extension claim; find restriction log fact", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:44:47+00:00", "kind": "claim", "stage": "08_validation", "summary": "C-092 [fact] Чтобы узнать, сохранился ли интернет, нужна запись оператора о том, ограничивал ли он дост"}
+{"ts": "2026-11-19T18:44:47+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Register brief fact on restriction records", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:45:03+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Apply evaluator fixes to validation plan", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:45:09+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Show check warning", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:45:14+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Show check output head", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:45:18+00:00", "kind": "tool", "stage": "08_validation", "tool": "Bash", "summary": "description=Check impact and refresh S-014 fingerprint", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:45:25+00:00", "kind": "revision", "stage": "08_validation", "summary": "S-014: новая версия файла — исправлен только заголовок сценария A («до ~22 сентября, конец Q3»); числа не изменились, выводы C-084, C-087, C-088, C-091 в силе"}
+{"ts": "2026-11-19T18:45:25+00:00", "kind": "action", "stage": "08_validation", "summary": "Шаг 08: план проверки — ITT, рандомизация по группе, 25 недель набора, промежуточный α=0,005 (обнаружимо ≥5,1 п.п.), итог z=1,98 (общий α 0,050) [S-014, S-015]; срок решения по пользе сдвинут на начало Q4 [C-088]; evaluator (haiku) 0.83 pass, 8 доработок внесены", "model": "opus", "tokens_in": 90000, "tokens_out": 12000, "cost_usd": 0.6}
+{"ts": "2026-11-19T18:45:25+00:00", "kind": "stage", "stage": "09_plan", "summary": "08_validation → done"}

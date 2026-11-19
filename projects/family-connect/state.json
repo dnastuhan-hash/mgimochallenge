@@ -1,5 +1,5 @@
 {
-  "stage": "08_validation",
+  "stage": "09_plan",
   "stages": {
     "01_framing": "done",
     "02_materials": "done",
@@ -8,13 +8,13 @@
     "05_options": "done",
     "06_choice": "done",
     "07_strategy": "done",
-    "08_validation": "todo",
+    "08_validation": "done",
     "09_plan": "todo",
     "10_deliverable": "todo",
     "11_decisions": "todo"
   },
-  "next_action": "Шаг 08: план проверки пилота — сравнение, выборка 1 760/3 276 групп, стоп-условия (отзыв согласия [C-078], ложные сигналы), порог ≥4 п.п. к концу Q2 / ≥3 п.п. к середине Q3",
+  "next_action": "Шаг 09: план по кварталам (Q1 ворота и данные, Q2 запуск, Q3 набор, Q4 решение), ресурсы, риски, просьба руководителю (D-002, перенос решения по пользе на Q4)",
   "open_questions": [],
   "blocked_on_human": null,
-  "updated": "2026-11-19T18:39:44+00:00"
+  "updated": "2026-11-19T18:45:25+00:00"
 }
