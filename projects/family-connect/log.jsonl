@@ -457,3 +457,5 @@
 {"ts": "2026-11-19T20:09:33+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/docs/video-script.md", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:09:36+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Get cost table and output size", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:10:03+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/costs.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:10:09+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit video script and costs docs", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:10:09+00:00", "kind": "tool", "stage": "11_decisions", "tool": "SubagentHandback", "summary": "", "session": "cd6ec98c"}
