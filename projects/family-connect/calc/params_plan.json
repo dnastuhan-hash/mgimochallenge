@@ -1,0 +1,667 @@
+{
+ "meta": {
+  "title": "Связь для близких и собственных устройств",
+  "horizon_months": 36,
+  "note": "Месяц 1 = январь планового года. Решение о пилоте — конец Q1; пилот — Q2 (мес. 4–6, половина подходящих в новой версии); расширение — с мес. 7 при успехе.",
+  "note_plan": "Копия params.json для шага 09: единственный вариант alert_plan с графиком по плану проверки (08_validation)."
+ },
+ "params": {
+  "gp_per_paid_month": {
+   "value": 500,
+   "unit": "руб./мес./номер",
+   "type": "fact",
+   "source": "C-008",
+   "note": "ВП за доп. оплаченный месяц номера"
+  },
+  "gp_no_change_mln": {
+   "value": 279,
+   "unit": "млн руб.",
+   "type": "fact",
+   "source": "C-003",
+   "note": "ВП планового года без изменений"
+  },
+  "gp_target_mln": {
+   "value": 285,
+   "unit": "млн руб.",
+   "type": "fact",
+   "source": "C-003",
+   "note": "цель ВП, не ниже"
+  },
+  "groups_start": {
+   "value": 6500,
+   "unit": "групп",
+   "type": "fact",
+   "source": "C-005",
+   "note": "подключённые на начало планового года (оценка баз.)"
+  },
+  "groups_no_change_eoy": {
+   "value": 8000,
+   "unit": "групп",
+   "type": "fact",
+   "source": "C-005",
+   "note": "подключённые на конец года без изменений"
+  },
+  "pilot_share": {
+   "value": 0.5,
+   "unit": "доля",
+   "type": "decision",
+   "source": "дизайн пилота: случайная половина подходящих",
+   "note": "доля подходящих, получающих новую версию в Q2"
+  },
+  "ppg": {
+   "value": 1.8,
+   "low": 1.2,
+   "high": 2.5,
+   "unit": "номеров",
+   "type": "assumption",
+   "source": "C-036",
+   "note": "участников в группе кроме организатора"
+  },
+  "churn": {
+   "value": 0.015,
+   "low": 0.01,
+   "high": 0.025,
+   "unit": "доля/мес.",
+   "type": "assumption",
+   "source": "C-037",
+   "note": "отток номера при обычном обслуживании",
+   "max": 1
+  },
+  "eligible": {
+   "value": 0.6,
+   "low": 0.4,
+   "high": 0.8,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-038",
+   "note": "доля групп, где возможен сигнал и выделение"
+  },
+  "thr_share": {
+   "value": 0.04,
+   "low": 0.02,
+   "high": 0.08,
+   "max": 1,
+   "unit": "доля/мес.",
+   "type": "assumption",
+   "source": "C-039",
+   "note": "номеров участников ограничено за месяц из-за исчерпания доли"
+  },
+  "thr_red": {
+   "value": 0.25,
+   "low": 0.1,
+   "high": 0.4,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-040",
+   "note": "относительное снижение ограничений сигналом"
+  },
+  "churn_mult": {
+   "value": 2,
+   "low": 1.3,
+   "high": 3,
+   "unit": "раз",
+   "type": "assumption",
+   "source": "C-041",
+   "note": "отток после ограничения / обычный"
+  },
+  "act_alert": {
+   "value": 0.4,
+   "low": 0.2,
+   "high": 0.6,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-042",
+   "note": "организаторы, действующие после сигнала"
+  },
+  "event_share": {
+   "value": 0.25,
+   "low": 0.15,
+   "high": 0.4,
+   "max": 1,
+   "unit": "доля/мес.",
+   "type": "assumption",
+   "source": "C-043",
+   "note": "подходящие группы с событием низкого остатка за месяц"
+  },
+  "pay_lapse": {
+   "value": 0.03,
+   "low": 0.01,
+   "high": 0.06,
+   "max": 1,
+   "unit": "доля/мес.",
+   "type": "assumption",
+   "source": "C-054",
+   "note": "приостановки номеров участников за неоплату"
+  },
+  "lapse_prevented": {
+   "value": 0.4,
+   "low": 0.2,
+   "high": 0.6,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-049",
+   "note": "доля приостановок, предотвращённых напоминанием"
+  },
+  "part_months_saved": {
+   "value": 0.3,
+   "low": 0.1,
+   "high": 1,
+   "unit": "мес.",
+   "type": "assumption",
+   "source": "C-054",
+   "note": "оплаченных месяцев на предотвращённую приостановку участника"
+  },
+  "call_share": {
+   "value": 0.2,
+   "low": 0.1,
+   "high": 0.4,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-055",
+   "note": "перебоев с обращением в поддержку"
+  },
+  "contact_cost": {
+   "value": 150,
+   "low": 80,
+   "high": 250,
+   "unit": "руб.",
+   "type": "assumption",
+   "source": "C-055",
+   "note": "переменная стоимость обращения"
+  },
+  "var_share": {
+   "value": 0.5,
+   "low": 0,
+   "high": 1,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-055",
+   "note": "доля стоимости обращения, которая реально исчезает"
+  },
+  "sms_share": {
+   "value": 0.3,
+   "low": 0.2,
+   "high": 0.5,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-056",
+   "better": "lower",
+   "note": "сигналов по SMS"
+  },
+  "sms_cost": {
+   "value": 1.5,
+   "low": 1,
+   "high": 3,
+   "unit": "руб.",
+   "type": "assumption",
+   "source": "C-056",
+   "better": "lower",
+   "note": "цена SMS"
+  },
+  "pm_cost": {
+   "value": 350000,
+   "low": 250000,
+   "high": 500000,
+   "unit": "руб./чел.-мес.",
+   "type": "assumption",
+   "source": "C-044",
+   "better": "lower",
+   "note": "полная стоимость чел.-мес."
+  },
+  "pm_alert": {
+   "value": 5,
+   "low": 4,
+   "high": 6.5,
+   "unit": "чел.-мес.",
+   "type": "assumption",
+   "source": "C-057",
+   "better": "lower",
+   "note": "трудоёмкость: сигнал"
+  },
+  "pm_invite": {
+   "value": 3.5,
+   "low": 3,
+   "high": 5,
+   "unit": "чел.-мес.",
+   "type": "assumption",
+   "source": "C-057",
+   "better": "lower",
+   "note": "трудоёмкость: приглашение"
+  },
+  "pm_payers": {
+   "value": 2,
+   "low": 1.5,
+   "high": 3,
+   "unit": "чел.-мес.",
+   "type": "assumption",
+   "source": "C-057",
+   "better": "lower",
+   "note": "трудоёмкость: предложение плательщикам"
+  },
+  "pm_router": {
+   "value": 2.5,
+   "low": 2,
+   "high": 3.5,
+   "unit": "чел.-мес.",
+   "type": "assumption",
+   "source": "C-057",
+   "better": "lower",
+   "note": "трудоёмкость: напоминание по роутеру"
+  },
+  "pm_cabinet": {
+   "value": 12,
+   "low": 9,
+   "high": 18,
+   "unit": "чел.-мес.",
+   "type": "assumption",
+   "source": "C-057",
+   "better": "lower",
+   "note": "трудоёмкость: общий кабинет"
+  },
+  "group_churn_red": {
+   "value": 0.2,
+   "low": 0,
+   "high": 0.4,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-045",
+   "note": "насколько реже уходят номера в подключённой группе"
+  },
+  "port_in": {
+   "value": 0.1,
+   "low": 0.03,
+   "high": 0.2,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-046",
+   "note": "новых групп с новым для оператора номером"
+  },
+  "payer_reach": {
+   "value": 1500,
+   "low": 800,
+   "high": 3000,
+   "unit": "чел./мес.",
+   "type": "assumption",
+   "source": "C-047",
+   "note": "плательщиков за чужой номер с показом предложения"
+  },
+  "payer_conv": {
+   "value": 0.06,
+   "low": 0.02,
+   "high": 0.12,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-048",
+   "note": "конверсия плательщика в подключённую группу"
+  },
+  "groups_created_month": {
+   "value": 600,
+   "low": 400,
+   "high": 900,
+   "unit": "групп/мес.",
+   "type": "assumption",
+   "source": "C-058",
+   "note": "создаётся групп в месяц"
+  },
+  "accept_uplift": {
+   "value": 0.08,
+   "low": 0.03,
+   "high": 0.15,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-058",
+   "note": "доп. доля созданных групп, ставших подключёнными"
+  },
+  "invite_act_uplift": {
+   "value": 0.08,
+   "low": 0.03,
+   "high": 0.12,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-058",
+   "note": "прирост активации за 14 дней"
+  },
+  "router_numbers": {
+   "value": 900,
+   "low": 800,
+   "high": 1000,
+   "unit": "номеров",
+   "type": "assumption",
+   "source": "C-059",
+   "note": "роутерных номеров у подключённых владельцев"
+  },
+  "router_lapse": {
+   "value": 0.05,
+   "low": 0.02,
+   "high": 0.1,
+   "max": 1,
+   "unit": "доля/мес.",
+   "type": "assumption",
+   "source": "C-049",
+   "note": "приостановки роутерных номеров за неоплату"
+  },
+  "router_months_saved": {
+   "value": 1,
+   "low": 0.5,
+   "high": 2,
+   "unit": "мес.",
+   "type": "assumption",
+   "source": "C-049",
+   "note": "оплаченных месяцев на предотвращённую приостановку роутера"
+  },
+  "owners_extra": {
+   "value": 200,
+   "low": 50,
+   "high": 500,
+   "unit": "владельцев",
+   "type": "assumption",
+   "source": "C-059",
+   "note": "доп. подключённые владельцы за год"
+  },
+  "payer_port_in": {
+   "value": 0.02,
+   "low": 0,
+   "high": 0.05,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-070 (возражение red-team S-012)",
+   "note": "новых номеров в группах плательщиков (номер близкого уже у оператора)"
+  },
+  "payer_churn_red": {
+   "value": 0.05,
+   "low": 0,
+   "high": 0.15,
+   "max": 1,
+   "unit": "доля",
+   "type": "assumption",
+   "source": "C-070 (возражение red-team S-012)",
+   "note": "снижение оттока номеров в группах плательщиков (и так удерживаются платежами)"
+  }
+ },
+ "economics": {
+  "rate": "gp_per_paid_month",
+  "baseline_gp": "gp_no_change_mln",
+  "target_gp": "gp_target_mln",
+  "payback_months": 24,
+  "boundary": [
+   "thr_red",
+   "churn_mult",
+   "payer_conv",
+   "payer_reach",
+   "accept_uplift",
+   "router_lapse",
+   "payer_churn_red"
+  ],
+  "options": {
+   "alert_plan": {
+    "title": "2. Сигнал — по плану: пилот с июня, расширение с декабря (итог конца ноября)",
+    "description": "Разработка в Q2 (3 чел.-мес. [C-018]); пилот 50 % подходящих групп с июня (месяц 6); расширение с месяца 12.",
+    "streams": [
+     {
+      "name": "удержание: меньше ограничений (пилот)",
+      "type": "retention",
+      "covered_stock": "(groups_start * eligible * pilot_share) * ppg",
+      "covered_inflow": 0,
+      "start_month": 6,
+      "churn_base": "churn",
+      "churn_reduction": "thr_share*thr_red*(churn_mult-1)/(1+thr_share*(churn_mult-1))"
+     },
+     {
+      "name": "удержание: меньше ограничений (расширение)",
+      "type": "retention",
+      "covered_stock": "(groups_start * eligible * (1 - pilot_share)) * ppg",
+      "covered_inflow": "(groups_no_change_eoy - groups_start) / 12 * eligible * ppg",
+      "start_month": 12,
+      "churn_base": "churn",
+      "churn_reduction": "thr_share*thr_red*(churn_mult-1)/(1+thr_share*(churn_mult-1))"
+     },
+     {
+      "name": "предотвращённые приостановки (пилот)",
+      "type": "lapse_prevention",
+      "numbers": "groups_start * eligible * pilot_share * ppg",
+      "lapse_rate": "pay_lapse",
+      "prevented_share": "lapse_prevented",
+      "months_saved": "part_months_saved",
+      "start_month": 6
+     },
+     {
+      "name": "предотвращённые приостановки (расширение)",
+      "type": "lapse_prevention",
+      "numbers": "groups_no_change_eoy * eligible * ppg - groups_start * eligible * pilot_share * ppg",
+      "lapse_rate": "pay_lapse",
+      "prevented_share": "lapse_prevented",
+      "months_saved": "part_months_saved",
+      "start_month": 12
+     },
+     {
+      "name": "экономия поддержки",
+      "type": "monthly_gp",
+      "rub_per_month": "groups_no_change_eoy * eligible * ppg * (thr_share*thr_red + pay_lapse*lapse_prevented) * call_share * contact_cost * var_share",
+      "start_month": 12
+     }
+    ],
+    "costs": [
+     {
+      "name": "SMS-сигналы",
+      "rub_per_unit": "sms_cost",
+      "units_per_month": "groups_no_change_eoy * eligible * event_share * sms_share",
+      "start_month": 12
+     },
+     {
+      "name": "SMS-сигналы (пилот)",
+      "rub_per_unit": "sms_cost",
+      "units_per_month": "groups_start * eligible * pilot_share * event_share * sms_share",
+      "start_month": 6,
+      "end_month": 11
+     }
+    ],
+    "dev_cost": "pm_alert * pm_cost"
+   },
+   "alert_plan_early": {
+    "title": "2. Сигнал — ранний успех: пилот с июня, расширение с сентября (промежуточный анализ)",
+    "description": "Разработка в Q2 (3 чел.-мес. [C-018]); пилот 50 % подходящих групп с июня (месяц 6); расширение с месяца 9.",
+    "streams": [
+     {
+      "name": "удержание: меньше ограничений (пилот)",
+      "type": "retention",
+      "covered_stock": "(groups_start * eligible * pilot_share) * ppg",
+      "covered_inflow": 0,
+      "start_month": 6,
+      "churn_base": "churn",
+      "churn_reduction": "thr_share*thr_red*(churn_mult-1)/(1+thr_share*(churn_mult-1))"
+     },
+     {
+      "name": "удержание: меньше ограничений (расширение)",
+      "type": "retention",
+      "covered_stock": "(groups_start * eligible * (1 - pilot_share)) * ppg",
+      "covered_inflow": "(groups_no_change_eoy - groups_start) / 12 * eligible * ppg",
+      "start_month": 9,
+      "churn_base": "churn",
+      "churn_reduction": "thr_share*thr_red*(churn_mult-1)/(1+thr_share*(churn_mult-1))"
+     },
+     {
+      "name": "предотвращённые приостановки (пилот)",
+      "type": "lapse_prevention",
+      "numbers": "groups_start * eligible * pilot_share * ppg",
+      "lapse_rate": "pay_lapse",
+      "prevented_share": "lapse_prevented",
+      "months_saved": "part_months_saved",
+      "start_month": 6
+     },
+     {
+      "name": "предотвращённые приостановки (расширение)",
+      "type": "lapse_prevention",
+      "numbers": "groups_no_change_eoy * eligible * ppg - groups_start * eligible * pilot_share * ppg",
+      "lapse_rate": "pay_lapse",
+      "prevented_share": "lapse_prevented",
+      "months_saved": "part_months_saved",
+      "start_month": 9
+     },
+     {
+      "name": "экономия поддержки",
+      "type": "monthly_gp",
+      "rub_per_month": "groups_no_change_eoy * eligible * ppg * (thr_share*thr_red + pay_lapse*lapse_prevented) * call_share * contact_cost * var_share",
+      "start_month": 9
+     }
+    ],
+    "costs": [
+     {
+      "name": "SMS-сигналы",
+      "rub_per_unit": "sms_cost",
+      "units_per_month": "groups_no_change_eoy * eligible * event_share * sms_share",
+      "start_month": 9
+     },
+     {
+      "name": "SMS-сигналы (пилот)",
+      "rub_per_unit": "sms_cost",
+      "units_per_month": "groups_start * eligible * pilot_share * event_share * sms_share",
+      "start_month": 6,
+      "end_month": 8
+     }
+    ],
+    "dev_cost": "pm_alert * pm_cost"
+   }
+  }
+ },
+ "forecast": {
+  "option": "alert_plan",
+  "option_vars": {
+   "asis": {
+    "x_groups": 0,
+    "x_active_share": 0,
+    "x_activation": 0,
+    "x_owners": 0
+   },
+   "freeze": {
+    "x_groups": 0,
+    "x_active_share": 0,
+    "x_activation": 0,
+    "x_owners": 0
+   },
+   "alert": {
+    "x_groups": 0,
+    "x_active_share": "(1 - 5000/8000) * eligible * event_share * act_alert",
+    "x_activation": "(1 - 0.45) * eligible * event_share * 0.5 * act_alert",
+    "x_owners": 0
+   },
+   "invite": {
+    "x_groups": "groups_created_month * accept_uplift * (6 + 3 * pilot_share)",
+    "x_active_share": 0,
+    "x_activation": "invite_act_uplift",
+    "x_owners": 0
+   },
+   "payers": {
+    "x_groups": "payer_reach * payer_conv * (6 + 3 * pilot_share)",
+    "x_active_share": 0,
+    "x_activation": 0,
+    "x_owners": 0
+   },
+   "router": {
+    "x_groups": 0,
+    "x_active_share": 0,
+    "x_activation": 0,
+    "x_owners": "owners_extra"
+   },
+   "cabinet": {
+    "x_groups": 0,
+    "x_active_share": 0,
+    "x_activation": 0,
+    "x_owners": 0
+   },
+   "alert_plan": {
+    "x_groups": 0,
+    "x_active_share": "(1 - 5000/8000) * eligible * event_share * act_alert",
+    "x_activation": "(1 - 0.45) * eligible * event_share * 0.5 * act_alert",
+    "x_owners": 0
+   },
+   "alert_plan_early": {
+    "x_groups": 0,
+    "x_active_share": "(1 - 5000/8000) * eligible * event_share * act_alert",
+    "x_activation": "(1 - 0.45) * eligible * event_share * 0.5 * act_alert",
+    "x_owners": 0
+   }
+  },
+  "metrics": [
+   {
+    "key": "gp",
+    "name": "Валовая прибыль, млн руб.",
+    "unit": "млн руб.",
+    "plan": 282,
+    "estimate": 275,
+    "no_change": 279,
+    "target": 285,
+    "expr": "gp_no_change_mln + econ_net_y1_mln",
+    "nd": 1,
+    "explain": "без изменений + чистый вклад варианта года 1 (economics.py); разработка — отдельно."
+   },
+   {
+    "key": "groups",
+    "name": "Подключённые группы на конец года",
+    "unit": "групп",
+    "plan": 7500,
+    "estimate": 6500,
+    "no_change": 8000,
+    "target": 12000,
+    "expr": "groups_no_change_eoy + x_groups",
+    "explain": "без изменений + дополнительные подключения варианта (отток новых групп в году не вычитался — он мал на горизонте ≤ 9 мес.)."
+   },
+   {
+    "key": "active",
+    "name": "Активные группы за последний месяц",
+    "unit": "групп",
+    "plan": 5000,
+    "estimate": 4000,
+    "no_change": 5000,
+    "target": 8000,
+    "expr": "groups * (5000/8000 + x_active_share)",
+    "explain": "подключённые × доля активных (62,5 % без изменений + прирост доли от варианта)."
+   },
+   {
+    "key": "owners",
+    "name": "Подключённые владельцы на конец года",
+    "unit": "владельцев",
+    "plan": 1000,
+    "estimate": 800,
+    "no_change": 1000,
+    "target": 2000,
+    "expr": "1000 + x_owners",
+    "explain": "без изменений + доп. владельцы, объединившие номера ради напоминания."
+   },
+   {
+    "key": "act14",
+    "name": "Активация за 14 дней (группы посл. квартала)",
+    "unit": "%",
+    "plan": 0.5,
+    "estimate": 0.42,
+    "no_change": 0.45,
+    "target": 0.6,
+    "expr": "0.45 + x_activation",
+    "nd": 1,
+    "explain": "без изменений + прирост доли групп с первым действием за 14 дней."
+   }
+  ]
+ },
+ "pilot": {
+  "title": "Пилот «Сигнал до перебоя»",
+  "p1": 0.12,
+  "p2": 0.09,
+  "cluster_size": 1,
+  "icc": 0,
+  "weekly": "groups_start * eligible * event_share * 0.6 / 4.33",
+  "weeks": 13,
+  "observe_weeks": 1,
+  "scenarios": true
+ }
+}

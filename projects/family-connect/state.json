@@ -1,5 +1,5 @@
 {
-  "stage": "09_plan",
+  "stage": "10_deliverable",
   "stages": {
     "01_framing": "done",
     "02_materials": "done",
@@ -9,12 +9,12 @@
     "06_choice": "done",
     "07_strategy": "done",
     "08_validation": "done",
-    "09_plan": "todo",
+    "09_plan": "done",
     "10_deliverable": "todo",
     "11_decisions": "todo"
   },
-  "next_action": "Шаг 09: план по кварталам (Q1 ворота и данные, Q2 запуск, Q3 набор, Q4 решение), ресурсы, риски, просьба руководителю (D-002, перенос решения по пользе на Q4)",
+  "next_action": "Шаг 10: итоговый документ deliverables/strategy.md из work/01–09, red-team перед сдачей, sfp check, приёмка руководителем; поправить в 05_options оценку 4+3 «+1 000…1 500» на C-104",
   "open_questions": [],
   "blocked_on_human": null,
-  "updated": "2026-11-19T18:45:25+00:00"
+  "updated": "2026-11-19T18:52:57+00:00"
 }

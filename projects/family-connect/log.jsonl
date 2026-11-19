@@ -261,3 +261,48 @@
 {"ts": "2026-11-19T18:45:25+00:00", "kind": "revision", "stage": "08_validation", "summary": "S-014: новая версия файла — исправлен только заголовок сценария A («до ~22 сентября, конец Q3»); числа не изменились, выводы C-084, C-087, C-088, C-091 в силе"}
 {"ts": "2026-11-19T18:45:25+00:00", "kind": "action", "stage": "08_validation", "summary": "Шаг 08: план проверки — ITT, рандомизация по группе, 25 недель набора, промежуточный α=0,005 (обнаружимо ≥5,1 п.п.), итог z=1,98 (общий α 0,050) [S-014, S-015]; срок решения по пользе сдвинут на начало Q4 [C-088]; evaluator (haiku) 0.83 pass, 8 доработок внесены", "model": "opus", "tokens_in": 90000, "tokens_out": 12000, "cost_usd": 0.6}
 {"ts": "2026-11-19T18:45:25+00:00", "kind": "stage", "stage": "09_plan", "summary": "08_validation → done"}
+{"ts": "2026-11-19T18:47:09+00:00", "kind": "human", "stage": "09_plan", "summary": "Руководитель: продолжить к шагу 09"}
+{"ts": "2026-11-19T18:47:09+00:00", "kind": "stage", "stage": "09_plan", "summary": "09_plan → in_progress"}
+{"ts": "2026-11-19T18:47:14+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Inspect forecast params and decision-support method", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:47:21+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Inspect alert option economics params", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:47:30+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Show economics.py usage", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:47:42+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Build plan-scenario params and run economics/forecast", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:47:48+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Check end_month support and plan outputs", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:48:02+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Read resource and timing facts", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:48:06+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Read brief plan/resources pages", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:48:42+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Recompute economics/forecast for June launch", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:48:55+00:00", "kind": "source", "stage": "09_plan", "summary": "S-016 План шага 09: экономика и прогноз сигнала по календарю (пилот с июня; расширение с декабря / с сентября)"}
+{"ts": "2026-11-19T18:48:55+00:00", "kind": "claim", "stage": "09_plan", "summary": "C-093 [inference] Календарь пилота: разработка 3 чел.-мес. выделена только на Q2 [C-018] → запуск не раньше "}
+{"ts": "2026-11-19T18:48:55+00:00", "kind": "claim", "stage": "09_plan", "summary": "C-094 [forecast] Сигнал по календарю плана (пилот с июня, расширение с декабря): чистый вклад в ВП года 1 +"}
+{"ts": "2026-11-19T18:48:55+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Register plan calc and calendar claims", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:49:01+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-087 → superseded (новое C-095): календарь: старт пилота ~1 июня, а не 1 апреля [C-093]"}
+{"ts": "2026-11-19T18:49:02+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-084 → superseded (новое C-096): календарь: промежуточный анализ — на 13-й неделе пилота (~6 сентября), а не в конце Q2 [C-093]"}
+{"ts": "2026-11-19T18:49:02+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Supersede timing claims C-087 and C-084", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:49:11+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-093 → superseded (новое C-097): основания заменены на C-095, C-096"}
+{"ts": "2026-11-19T18:49:11+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-088 → superseded (новое C-098): календарь [C-093]"}
+{"ts": "2026-11-19T18:49:11+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-089 → superseded (новое C-099): основания заменены"}
+{"ts": "2026-11-19T18:49:11+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-091 → superseded (новое C-100): календарь [C-093]"}
+{"ts": "2026-11-19T18:49:11+00:00", "kind": "decision", "stage": "09_plan", "summary": "D-001 обновлено:  Шаг 09 [C-093, C-097…]: запуск пилота ~1 июня (разработка в Q2), промежуточный анализ ~6 сентября (≥ 5,1 п.п.), итог ~29 ноября, решение по пользе — начало декабря. Конец Q2 — решение о надёжности, понятности, вреде и сроке набора. review_by 2027-03-31 (ворота Q1) остаётся"}
+{"ts": "2026-11-19T18:49:11+00:00", "kind": "note", "stage": "09_plan", "summary": "revisit 08_validation: даты сдвинуты — старт пилота ~1 июня вместо 1 апреля, т.к. разработка выделена только на Q2 [C-018, C-093]; дизайн и выборка не меняются"}
+{"ts": "2026-11-19T18:49:16+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Show check warnings", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:49:38+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-094 → superseded (новое C-101): основание C-093 заменено на C-097"}
+{"ts": "2026-11-19T18:49:38+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Update references and dates in steps 07 and 08", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:49:44+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Fix Q3 mentions, check remaining Q2 refs", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:50:26+00:00", "kind": "claim", "stage": "09_plan", "summary": "C-102 [assumption] Ресурсы программы на плановый год, сверх построения (5 чел.-мес. [C-057]): аналитик 0,5 ст"}
+{"ts": "2026-11-19T18:50:26+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Register program resource assumption", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:22+00:00", "kind": "tool", "stage": "09_plan", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/work/09_plan.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:25+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Run registry check", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:29+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Point plan to current forecast claim, recheck", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:37+00:00", "kind": "tool", "stage": "09_plan", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/work/09_plan.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:37+00:00", "kind": "tool", "stage": "09_plan", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/.claude/skills/plan/SKILL.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:37+00:00", "kind": "tool", "stage": "09_plan", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/sources/brief.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:37+00:00", "kind": "tool", "stage": "09_plan", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/calc/plan09/alert_plan/economics_out.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:38+00:00", "kind": "tool", "stage": "09_plan", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/calc/plan09/alert_plan/forecast_alert_plan_out.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:51:38+00:00", "kind": "tool", "stage": "09_plan", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/claims.jsonl", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:52:30+00:00", "kind": "tool", "stage": "09_plan", "tool": "SubagentHandback", "summary": "", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:52:30+00:00", "kind": "tool", "stage": "09_plan", "tool": "Agent", "summary": "subagent_type=evaluator", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:52:49+00:00", "kind": "revision", "stage": "09_plan", "summary": "C-102 → superseded (новое C-103): уточнён состав суммы: построение входит в итог, а не сверх него"}
+{"ts": "2026-11-19T18:52:49+00:00", "kind": "claim", "stage": "09_plan", "summary": "C-104 [forecast] Варианты 3 + 4 вместе: +1 035 подключённых групп [210…3 710] (приглашение +360 [90…1 010],"}
+{"ts": "2026-11-19T18:52:49+00:00", "kind": "tool", "stage": "09_plan", "tool": "Bash", "summary": "description=Apply evaluator fixes to plan, register claims", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:52:57+00:00", "kind": "action", "stage": "09_plan", "summary": "Шаг 09: план по кварталам с календарём (пилот с ~1 июня), прогноз 5 строк [S-016, C-101], недостижимые цели, ресурсы 14 чел.-мес. [C-103], зависимости, риски, просьба; revisit 07/08 по датам; evaluator (haiku) 0.875 pass, 6 доработок внесены", "model": "opus", "tokens_in": 110000, "tokens_out": 16000, "cost_usd": 0.76}
+{"ts": "2026-11-19T18:52:57+00:00", "kind": "stage", "stage": "10_deliverable", "summary": "09_plan → done"}
