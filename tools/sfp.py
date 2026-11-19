@@ -1085,7 +1085,10 @@ def main(argv=None):
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     a = build_parser().parse_args(argv)
-    a.f(a)
+    try:
+        a.f(a)
+    except BrokenPipeError:  # вывод обрезан (| head) — это не ошибка
+        os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno())
 
 
 if __name__ == "__main__":
