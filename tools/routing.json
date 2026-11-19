@@ -1,0 +1,30 @@
+{
+  "_note": "Маршрутизация: задача → процесс (навык) → исполнитель → модель. Порядок эскалации при низкой оценке evaluator: haiku → sonnet → opus.",
+  "escalation": ["haiku", "sonnet", "opus"],
+  "quality_threshold": 0.75,
+  "routes": [
+    {"id": "extract", "keywords": ["извлеч", "выписать", "распознать", "таблиц", "pdf", "docx", "xlsx", "конверт", "текст из"],
+     "skill": "materials", "agent": "main+tools/extract.py", "model": "haiku", "why": "механическое извлечение, ошибки ловит sfp check"},
+    {"id": "classify", "keywords": ["классифиц", "разметить", "тип утвержд", "категор", "закодир", "кодирован"],
+     "skill": "interview", "agent": "evaluator", "model": "haiku", "why": "выбор из заданных классов"},
+    {"id": "evaluate", "keywords": ["оцен", "рубрик", "провер качеств", "соответств", "критер"],
+     "skill": "deliverable", "agent": "evaluator", "model": "haiku", "why": "оценка по заданным признакам, дёшево и повторяемо"},
+    {"id": "synthetic", "keywords": ["модельн", "синтетич", "персон", "респондент", "роль клиента"],
+     "skill": "interview", "agent": "synthetic-respondent", "model": "haiku", "why": "генерация гипотез; доказательной силы не имеет — дорогая модель не нужна"},
+    {"id": "research", "keywords": ["исследов", "найти", "источник", "рынок", "конкурент", "сопостав", "альтернатив"],
+     "skill": "research", "agent": "researcher", "model": "sonnet", "why": "чтение и сопоставление многих источников"},
+    {"id": "calc", "keywords": ["расчёт", "расчет", "посчитать", "прибыл", "окупаем", "выборк", "прогноз", "экономик", "метрик"],
+     "skill": "validation", "agent": "analyst", "model": "sonnet", "why": "код и проверка единиц; число считает Python, а не модель"},
+    {"id": "ux", "keywords": ["интерфейс", "скриншот", "экран", "путь клиента", "ux", "макет"],
+     "skill": "ux-review", "agent": "ux-reviewer", "model": "sonnet", "why": "мультимодальный разбор с привязкой к видимому"},
+    {"id": "options", "keywords": ["вариант", "альтернативные пути", "сценари"],
+     "skill": "options", "agent": "main", "model": "opus", "why": "содержательно разные варианты — самое ценное суждение"},
+    {"id": "redteam", "keywords": ["возражен", "критик", "red team", "слабые места", "опроверг"],
+     "skill": "options", "agent": "red-team", "model": "opus", "why": "сильные возражения требуют сильной модели"},
+    {"id": "strategy", "keywords": ["стратег", "позиционир", "сообщени", "коммуникац", "канал"],
+     "skill": "strategy", "agent": "main", "model": "opus", "why": "согласование продукта, экономики и коммуникации"},
+    {"id": "revise", "keywords": ["новые данные", "обнов", "пересмотр", "изменилось", "устарел"],
+     "skill": "revise", "agent": "main", "model": "sonnet", "why": "sfp impact находит затронутое, модель переписывает только это"}
+  ],
+  "default": {"skill": "framing", "agent": "main", "model": "opus", "why": "неясная задача — сначала постановка"}
+}

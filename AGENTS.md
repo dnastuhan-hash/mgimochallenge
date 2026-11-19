@@ -121,4 +121,8 @@
 
 `python3 tools/sfp.py <команда>` (алиас `./sfp`):
 `status`, `stage`, `next`, `question`, `source add|list`, `claim add|list|retract|supersede`, `impact`,
-`decision add|commit|set|list`, `check`, `log`, `cost`, `history`, `search`. Справка: `--help` у любой команды.
+`decision add|commit|set|list`, `check`, `log`, `cost`, `history`, `search`, `route`. Справка: `--help` у любой команды.
+
+Ещё: `python3 tools/extract.py <файл>` (PDF/DOCX/XLSX/CSV/HTML → Markdown), `python3 tools/fetch_source.py <url>`
+(снимок разрешённой страницы), `tools/calc/*` (расчёты). Те же реестры доступны через MCP-сервер `sfp` (`.mcp.json`).
+Субагенты: `researcher`, `analyst`, `red-team`, `synthetic-respondent`, `evaluator`, `ux-reviewer` (`.claude/agents/`).

@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./sfp:*)",
+      "Bash(python3 tools/sfp.py:*)",
+      "Bash(python3 tools/extract.py:*)",
+      "Bash(python3 tools/calc/:*)",
+      "Bash(python3 -m pytest:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/session_start.py\""}]}
+    ],
+    "PreToolUse": [
+      {"matcher": "WebFetch|WebSearch|Write|Edit|MultiEdit",
+       "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/guard.py\""}]}
+    ],
+    "PostToolUse": [
+      {"matcher": "*",
+       "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/log_tool.py\""}]}
+    ]
+  }
+}

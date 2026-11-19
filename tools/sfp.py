@@ -836,6 +836,46 @@ def cmd_search(a):
             print(f"       связи: {', '.join(refs[:12])}")
 
 
+# --- routing
+ROUTING_FILE = ROOT / "tools" / "routing.json"
+
+
+def route(task: str) -> dict:
+    cfg = read_json(ROUTING_FILE, {})
+    t = _norm(task)
+    best, best_hits = None, 0
+    for r in cfg.get("routes", []):
+        matched = [k for k in r["keywords"] if k in t]
+        hits = len(matched) + sum(len(k) for k in matched) / 100  # при равенстве — более конкретное совпадение
+        if hits > best_hits:
+            best, best_hits = r, hits
+    res = dict(best or cfg.get("default", {}))
+    n = int(best_hits)
+    res["matched_keywords"] = n
+    res["confidence"] = "high" if n >= 2 else "low" if n == 1 else "none"
+    return res
+
+
+def cmd_route(a):
+    cfg = read_json(ROUTING_FILE, {})
+    if a.escalate:
+        order = cfg.get("escalation", ["haiku", "sonnet", "opus"])
+        cur = a.escalate
+        nxt = order[order.index(cur) + 1] if cur in order and order.index(cur) + 1 < len(order) else None
+        if nxt:
+            print(f"Эскалация: {cur} → {nxt}. Повторите шаг с моделью {nxt} и запишите: "
+                  f"sfp log \"эскалация {cur}→{nxt}: <причина>\" --kind note")
+        else:
+            print(f"{cur} — верхняя ступень; нужен человек: уточнить задачу или данные.")
+        return
+    r = route(a.task)
+    print(f"Процесс (навык): {r.get('skill')}\nИсполнитель: {r.get('agent')}\nМодель: {r.get('model')}\n"
+          f"Почему: {r.get('why')}\nУверенность маршрута: {r['confidence']}")
+    if r["confidence"] != "high":
+        print("Маршрут неочевиден — главный агент выбирает сам и записывает выбор в журнал.")
+    print(f"Порог качества evaluator: {cfg.get('quality_threshold')}; ниже — `sfp route --escalate {r.get('model')}`")
+
+
 # ----------------------------------------------------------------- argparse
 def build_parser():
     p = argparse.ArgumentParser(prog="sfp", description="Стратег Фабрики продуктов — состояние, реестры, проверки")
@@ -890,6 +930,9 @@ def build_parser():
     s = sub.add_parser("cost", help="время и стоимость по шагам"); s.set_defaults(f=cmd_cost)
     s = sub.add_parser("history", help="журнал действий"); s.add_argument("-n", type=int, default=30); s.add_argument("--kind"); s.set_defaults(f=cmd_history)
     s = sub.add_parser("search", help="поиск по знаниям и проекту"); s.add_argument("query"); s.add_argument("-k", type=int, default=8); s.set_defaults(f=cmd_search)
+    s = sub.add_parser("route", help="выбрать процесс, исполнителя и модель для задачи")
+    s.add_argument("task", nargs="?", default=""); s.add_argument("--escalate", metavar="MODEL", help="следующая ступень после неудачи")
+    s.set_defaults(f=cmd_route)
     return p
 
 
