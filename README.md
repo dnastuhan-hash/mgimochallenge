@@ -130,7 +130,9 @@ docs/                  архитектура, модели и инструме�
 tests/                 pytest
 ```
 
-Подробно: [`docs/architecture.md`](docs/architecture.md).
+Подробно: [`docs/architecture.md`](docs/architecture.md). Описание работы для жюри (PDF со скриншотами) —
+[`docs/description.pdf`](docs/description.pdf), пересборка: `python3 docs/build_pdf.py` (нужны Node + Playwright).
+Сценарий видео — [`docs/video-script.md`](docs/video-script.md).
 
 ### Ключевые решения
 

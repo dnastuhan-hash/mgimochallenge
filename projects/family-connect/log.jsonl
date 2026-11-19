@@ -466,3 +466,10 @@
 {"ts": "2026-11-19T20:11:10+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Gather evidence for capability claims", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:11:34+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/capabilities.md", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:11:38+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Count superseded claims, log lines, commands", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:11:46+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Fix counts and commit capabilities doc", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:12:17+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/build_pdf.py", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:12:23+00:00", "kind": "action", "stage": "11_decisions", "summary": "export strategy.md → strategy.html"}
+{"ts": "2026-11-19T20:12:27+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Build description PDF with screenshots", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:12:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Render PDF pages to images", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:12:36+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Make contact sheet of PDF pages", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:12:39+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/tmp/claude-0/-home-user-mgimochallenge/cd6ec98c-5efa-587d-b79a-4428eca5ce93/scratchpad/sheet.png", "session": "cd6ec98c"}
