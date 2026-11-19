@@ -1,0 +1,28 @@
+{
+  "meta": {"title": "Пример (не демо-проект): формат параметров", "horizon_months": 36},
+  "params": {
+    "gp_per_paid_month": {"value": 500, "unit": "руб./мес./номер", "type": "fact", "source": "пример", "note": "ВП за доп. оплаченный месяц"},
+    "gp_no_change_mln": {"value": 279, "unit": "млн руб.", "type": "fact", "source": "пример", "note": "ВП без изменений"},
+    "gp_target_mln": {"value": 285, "unit": "млн руб.", "type": "fact", "source": "пример", "note": "цель"},
+    "covered": {"value": 10000, "low": 6000, "high": 14000, "unit": "номеров", "type": "assumption", "source": "пример", "note": "покрыто услугой"},
+    "churn": {"value": 0.02, "low": 0.015, "high": 0.03, "unit": "доля/мес.", "type": "assumption", "source": "пример", "note": "отток в месяц"},
+    "reduction": {"value": 0.2, "low": 0.05, "high": 0.35, "max": 1, "unit": "доля", "type": "assumption", "source": "пример", "note": "снижение оттока"},
+    "sms_cost": {"value": 2, "low": 1, "high": 3, "unit": "руб.", "type": "assumption", "source": "пример", "better": "lower", "note": "цена SMS"},
+    "dev_cost_rub": {"value": 1500000, "low": 1000000, "high": 2500000, "unit": "руб.", "type": "assumption", "source": "пример", "better": "lower", "note": "разработка"}
+  },
+  "economics": {
+    "rate": "gp_per_paid_month", "baseline_gp": "gp_no_change_mln", "target_gp": "gp_target_mln",
+    "dev_cost": "dev_cost_rub", "payback_months": 24, "boundary": ["reduction", "covered"],
+    "options": {
+      "alert": {"title": "Пример: сигнал о риске", "streams": [
+        {"name": "удержание", "type": "retention", "covered_stock": "covered", "covered_inflow": 0, "start_month": 4,
+         "churn_base": "churn", "churn_reduction": "reduction"}],
+        "costs": [{"name": "SMS", "rub_per_unit": "sms_cost", "units_per_month": "covered * 0.1", "start_month": 4}]}
+    }
+  },
+  "forecast": {"option": "alert", "metrics": [
+    {"key": "gp", "name": "Валовая прибыль, млн руб.", "unit": "млн руб.", "no_change": 279, "target": 285,
+     "expr": "gp_no_change_mln + econ_net_y1_mln", "nd": 1, "explain": "вклад варианта по economics.py."}
+  ]},
+  "pilot": {"title": "Пример пилота", "p1": 0.12, "p2": 0.09, "weekly": 100, "weeks": 6, "scenarios": false}
+}
