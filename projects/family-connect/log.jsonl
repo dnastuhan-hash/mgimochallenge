@@ -363,3 +363,4 @@
 {"ts": "2026-11-19T19:03:48+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "Bash", "summary": "description=Remove duplicated footnote phrase", "session": "cd6ec98c"}
 {"ts": "2026-11-19T19:03:55+00:00", "kind": "action", "stage": "10_deliverable", "summary": "Шаг 10: повторная оценка evaluator (haiku) 0.975 pass, 7 правок согласованности внесены; документ готов к приёмке", "model": "haiku"}
 {"ts": "2026-11-19T19:03:55+00:00", "kind": "stage", "stage": "10_deliverable", "summary": "10_deliverable → waiting_human: Принять или исправить deliverables/strategy.md; отдельно — решить, приемлема ли цена пользы ~1 270 руб./перебой за 3 года [C-112]"}
+{"ts": "2026-11-19T19:08:52+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "Bash", "summary": "description=Read step 11 skills and commit command help", "session": "cd6ec98c"}
