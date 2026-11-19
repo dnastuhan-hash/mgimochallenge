@@ -94,3 +94,10 @@ def test_assumption_without_range_rejected(tmp_path):
     f.write_text(json.dumps(cfg), encoding="utf-8")
     with pytest.raises(ValueError, match="диапазон"):
         load(f)
+
+
+def test_end_month_stops_inflow_but_keeps_survivors():
+    v = {"n": 100}
+    opt = {"streams": [{"type": "new_numbers", "per_month": "n", "start_month": 4, "end_month": 6, "churn": 0}]}
+    sim = simulate(opt, v, rate=500, horizon=12)
+    assert sim["paid_months"][6] == 300 and sim["paid_months"][12] == 300  # набор остановлен, набранные платят

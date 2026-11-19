@@ -1,0 +1,20 @@
+{
+  "stage": "06_choice",
+  "stages": {
+    "01_framing": "done",
+    "02_materials": "done",
+    "03_research": "done",
+    "04_situation": "done",
+    "05_options": "done",
+    "06_choice": "waiting_human",
+    "07_strategy": "todo",
+    "08_validation": "todo",
+    "09_plan": "todo",
+    "10_deliverable": "todo",
+    "11_decisions": "todo"
+  },
+  "next_action": "Шаг 06: выбор руководителя",
+  "open_questions": [],
+  "blocked_on_human": "Выбрать вариант для пилота: рекомендация — 2 «Сигнал до перебоя» с воротами Q1; альтернатива — 4+3 «рост групп»; отдельно — решение по цели ВП 285",
+  "updated": "2026-11-19T16:50:18+00:00"
+}

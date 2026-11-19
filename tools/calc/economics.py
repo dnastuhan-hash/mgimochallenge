@@ -16,7 +16,7 @@
 }
 Типы потоков (все значения — имена параметров или выражения):
   retention        — покрытые номера (stock в месяц start + inflow в мес.) с меньшим оттоком:
-                     {covered_stock, covered_inflow, start_month, churn_base, churn_reduction}
+                     {covered_stock, covered_inflow, start_month, [end_month], churn_base, churn_reduction}
   new_numbers      — дополнительные новые номера в месяц, платят с месяца прихода: {per_month, start_month, churn}
   lapse_prevention — предотвращённые остановки (неоплата): {numbers, lapse_rate, prevented_share, months_saved, start_month}
   monthly_gp       — другие доходы/экономия в руб./мес.: {rub_per_month, start_month}
@@ -40,6 +40,7 @@ def simulate(opt: dict, v: dict, rate: float, horizon: int) -> dict:
     for s in opt.get("streams", []):
         e = lambda k, d=0: ev(s[k], v) if k in s else d  # noqa: E731
         start = int(e("start_month", 1))
+        end = int(e("end_month", horizon))  # после end новые номера/события не добавляются; уже набранные — доживают
         series = [0.0] * (horizon + 1)
         t = s["type"]
         if t == "retention":
@@ -47,7 +48,7 @@ def simulate(opt: dict, v: dict, rate: float, horizon: int) -> dict:
             c1 = c0 * (1 - e("churn_reduction"))
             alive0 = alive1 = 0.0
             for m in range(start, horizon + 1):
-                add = (e("covered_stock") if m == start else 0) + e("covered_inflow", 0)
+                add = ((e("covered_stock") if m == start else 0) + e("covered_inflow", 0)) if m <= end else 0
                 alive0 = alive0 * (1 - c0) + add
                 alive1 = alive1 * (1 - c1) + add
                 series[m] = alive1 - alive0  # номера, которые платят в месяце m только благодаря изменению
@@ -55,12 +56,12 @@ def simulate(opt: dict, v: dict, rate: float, horizon: int) -> dict:
             c = e("churn")
             alive = 0.0
             for m in range(start, horizon + 1):
-                alive = alive * (1 - c) + e("per_month")
+                alive = alive * (1 - c) + (e("per_month") if m <= end else 0)
                 series[m] = alive
         elif t == "lapse_prevention":
             per_m = e("numbers") * e("lapse_rate") * e("prevented_share")
             L = e("months_saved")
-            for m in range(start, horizon + 1):
+            for m in range(start, end + 1):
                 # каждое предотвращённое событие даёт L месяцев оплаты, начиная с текущего
                 full = int(L)
                 for k in range(full):
@@ -69,7 +70,7 @@ def simulate(opt: dict, v: dict, rate: float, horizon: int) -> dict:
                 if L - full > 0 and m + full <= horizon:
                     series[m + full] += per_m * (L - full)
         elif t == "monthly_gp":
-            for m in range(start, horizon + 1):
+            for m in range(start, end + 1):
                 series[m] = e("rub_per_month") / rate  # переводим в эквивалент месяцев для единообразия
         else:
             raise ValueError(f"неизвестный тип потока {t}")
@@ -111,7 +112,8 @@ def run_option(cfg, opt_name, scen="base", override=None):
     }
     pb = int(econ.get("payback_months", 24))
     res["max_investment_payback"] = sum(sim["net"][1: pb + 1])
-    dev = ev(econ["dev_cost"], v) if econ.get("dev_cost") else None
+    dev_expr = econ["options"][opt_name].get("dev_cost") or econ.get("dev_cost")  # у варианта может быть своя стоимость
+    dev = ev(dev_expr, v) if dev_expr else None
     if dev:
         cum, month = 0.0, None
         for m in range(1, horizon + 1):
@@ -178,6 +180,8 @@ def render(cfg, opt_name, res_by_scen, bounds, sens) -> str:
         [f"Предельные вложения, окупаемые за {cfg['economics'].get('payback_months', 24)} мес., млн руб."]
         + [fmt(x / 1e6, 2) for x in g("max_investment_payback")],
     ]
+    if b.get("dev_cost"):
+        rows.append(["Стоимость разработки, млн руб."] + [fmt(res_by_scen[s]["dev_cost"] / 1e6, 2) for s in ("low", "base", "high")])
     if "payback_month" in b:
         rows.append(["Месяц окупаемости разработки"] + [str(res_by_scen[s].get("payback_month") or "> горизонта") for s in ("low", "base", "high")])
     L += [md_table(hdr, rows), ""]

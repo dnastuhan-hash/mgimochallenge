@@ -18,7 +18,7 @@ from pathlib import Path
 from statistics import NormalDist
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import fmt, load, md_table, values, write  # noqa: E402
+from common import ev, fmt, load, md_table, values, write  # noqa: E402
 
 Z = NormalDist().inv_cdf
 
@@ -103,7 +103,7 @@ def main():
         pilot = cfg.get("pilot", {})
         for scen in ("base", "low", "high") if pilot.get("scenarios", True) else ("base",):
             v = values(cfg, scen)
-            g = lambda k, d=None: v.get(pilot[k], pilot[k]) if k in pilot else d  # noqa: E731
+            g = lambda k, d=None: ev(pilot[k], v) if k in pilot else d  # noqa: E731
             r = compute(g("p1"), g("p2"), g("alpha", 0.05), g("power", 0.8), g("cluster_size", 1), g("icc", 0),
                         g("weekly"), g("weeks"), g("observe_weeks", 0), int(g("arms", 2)))
             data[scen] = r

@@ -26,11 +26,14 @@ from common import SCEN_RU, ev, fmt, load, md_table, values, write  # noqa: E402
 from economics import run_option  # noqa: E402
 
 
-def compute(cfg: dict, scen: str) -> dict:
+def compute(cfg: dict, scen: str, option: str | None = None) -> dict:
     fc = cfg["forecast"]
+    option = option or fc.get("option")
     env = dict(values(cfg, scen))
-    if fc.get("option"):
-        env["econ_net_y1_mln"] = run_option(cfg, fc["option"], scen)["net_y1"] / 1e6
+    if option and option in cfg.get("economics", {}).get("options", {}):
+        env["econ_net_y1_mln"] = run_option(cfg, option, scen)["net_y1"] / 1e6
+    for k, expr in fc.get("option_vars", {}).get(option, {}).items():  # переменные варианта (x_*)
+        env[k] = ev(expr, env)
     out = {}
     for m in fc["metrics"]:
         env["no_change"] = m.get("no_change")
@@ -40,8 +43,9 @@ def compute(cfg: dict, scen: str) -> dict:
     return out
 
 
-def render(cfg, res) -> str:
+def render(cfg, res, option=None) -> str:
     fc = cfg["forecast"]
+    option = option or fc.get("option")
     rows = []
     for m in fc["metrics"]:
         nd = m.get("nd", 0)
@@ -57,19 +61,51 @@ def render(cfg, res) -> str:
                   "Разрыв до цели (осн.)"], rows)
     expl = "\n".join(f"- **{m['name']}**: {m.get('explain', '')} Формула: `{m['expr']}`" for m in fc["metrics"])
     return (f"# Прогноз показателей — {cfg.get('meta', {}).get('title', '')}\n\n"
-            f"Скрипт: `tools/calc/forecast.py`. Вариант: `{fc.get('option', '—')}`.\n\n{t}\n\n## Откуда разница с «без изменений»\n\n{expl}\n")
+            f"Скрипт: `tools/calc/forecast.py`. Вариант: `{option or '—'}`.\n\n{t}\n\n## Откуда разница с «без изменений»\n\n{expl}\n")
+
+
+def compare(cfg) -> tuple[str, dict]:
+    """Сравнение вариантов по всем показателям: основной сценарий и вилка [неблагопр. … благопр.]."""
+    fc = cfg["forecast"]
+    opts = list(fc.get("option_vars", {}))
+    data, rows = {}, []
+    for o in opts:
+        r = {s: compute(cfg, s, o) for s in ("low", "base", "high")}
+        data[o] = r
+        title = cfg.get("economics", {}).get("options", {}).get(o, {}).get("title", o)
+        cells = [title]
+        for m in fc["metrics"]:
+            nd, pct = m.get("nd", 0), m.get("unit") == "%"
+            f = (lambda x: fmt(x * 100, nd) if pct else fmt(x, nd))
+            lo, ba, hi = r["low"][m["key"]], r["base"][m["key"]], r["high"][m["key"]]
+            cells.append(f"**{f(ba)}** [{f(min(lo, hi))}…{f(max(lo, hi))}]")
+        rows.append(cells)
+    hdr = ["Вариант"] + [m["name"] + (" (%)" if m.get("unit") == "%" else "") for m in fc["metrics"]]
+    tgt = ["**Цель**"] + [(fmt(m["target"] * 100, m.get("nd", 0)) if m.get("unit") == "%" else fmt(m["target"], m.get("nd", 0)))
+                          if m.get("target") is not None else "—" for m in fc["metrics"]]
+    md = ("# Сравнение вариантов по ключевым показателям планового года\n\n"
+          "Основной сценарий, в скобках — [неблагоприятный … благоприятный]. Скрипт: `tools/calc/forecast.py --compare`.\n\n"
+          + md_table(hdr, rows + [tgt]) + "\n")
+    return md, data
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--params", required=True)
+    ap.add_argument("--option", help="вариант из forecast.option_vars (по умолчанию forecast.option)")
+    ap.add_argument("--compare", action="store_true", help="сравнить все варианты из option_vars")
     ap.add_argument("--out")
     a = ap.parse_args()
     cfg = load(a.params)
-    res = {s: compute(cfg, s) for s in ("low", "base", "high")}
-    md = render(cfg, res)
+    if a.compare:
+        md, data = compare(cfg)
+        stem = "compare_out"
+    else:
+        data = {s: compute(cfg, s, a.option) for s in ("low", "base", "high")}
+        md = render(cfg, data, a.option)
+        stem = f"forecast_{a.option}_out" if a.option else "forecast_out"
     if a.out:
-        print(f"→ {write(a.out, 'forecast_out', md, res)}")
+        print(f"→ {write(a.out, stem, md, data)}")
     print(md)
 
 

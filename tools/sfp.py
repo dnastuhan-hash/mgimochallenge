@@ -362,6 +362,28 @@ def cmd_source_add(a):
     print(row["id"])
 
 
+def cmd_source_refresh(a):
+    """Файл источника изменился (пересчёт, новая версия): зафиксировать новый хэш и показать, что затронуто."""
+    pr = active_project(a.project)
+    rows = pr.sources()
+    for r in rows:
+        if r["id"] == a.id:
+            if not r.get("path"):
+                die(f"{a.id}: у источника нет файла")
+            new = hashlib.sha256((ROOT / r["path"]).read_bytes()).hexdigest()[:16]
+            if new == r.get("sha256"):
+                print(f"{a.id}: файл не менялся")
+                return
+            r.setdefault("versions", []).append({"sha256": r.get("sha256"), "until": now()})
+            r["sha256"], r["updated"] = new, now()
+            write_jsonl(pr.p("sources.jsonl"), rows)
+            pr.log("revision", f"{a.id}: новая версия файла — {a.reason}")
+            print(f"{a.id}: зафиксирована новая версия. Проверьте зависимые утверждения:")
+            impact_report(pr, a.id)
+            return
+    die(f"{a.id} не найден")
+
+
 def cmd_source_list(a):
     pr = active_project(a.project)
     for s in pr.sources():
@@ -434,6 +456,8 @@ def _set_claim_status(a, status):
                 new[fld] = v
         if a.sources:
             new["sources"] = split_list(a.sources)
+        if getattr(a, "depends", None):
+            new["depends_on"] = split_list(a.depends)
         c["superseded_by"] = new["id"]
         rows.append(new)
         new_id = new["id"]
@@ -527,7 +551,11 @@ def impact_report(pr: Project, start: str):
         return
     for x in order:
         if x in claims:
-            print(f"  утверждение {x} [{claims[x]['type']}] {claims[x]['text'][:100]}")
+            st = claims[x].get("status", "active")
+            if st != "active" and not getattr(impact_report, "show_all", False):
+                continue  # заменённые/отозванные уже не действуют — не шумим
+            mark = "" if st == "active" else f" ({st})"
+            print(f"  утверждение {x} [{claims[x]['type']}]{mark} {claims[x]['text'][:100]}")
         elif x in decs:
             print(f"  РЕШЕНИЕ {x}: {decs[x]['title']} (ответственный: {decs[x].get('owner', '?')})")
     for f, ids in sorted(affected_files.items()):
@@ -897,6 +925,7 @@ def build_parser():
     s.add_argument("--path"); s.add_argument("--url"); s.add_argument("--retrieved"); s.add_argument("--reliability", choices=["high", "medium", "low"])
     s.add_argument("--note"); s.add_argument("--force", action="store_true"); s.set_defaults(f=cmd_source_add)
     s = src.add_parser("list"); s.set_defaults(f=cmd_source_list)
+    s = src.add_parser("refresh", help="файл источника обновлён: новый хэш + что затронуто"); s.add_argument("id"); s.add_argument("--reason", required=True); s.set_defaults(f=cmd_source_refresh)
 
     cl = sub.add_parser("claim", help="реестр утверждений").add_subparsers(dest="sub", required=True)
     s = cl.add_parser("add"); s.add_argument("text"); s.add_argument("--type", required=True)
@@ -908,7 +937,7 @@ def build_parser():
     s = cl.add_parser("retract", help="отозвать (неверно)"); s.add_argument("id"); s.add_argument("--reason", required=True); s.set_defaults(f=cmd_claim_retract)
     s = cl.add_parser("supersede", help="заменить новой версией"); s.add_argument("id"); s.add_argument("--reason", required=True)
     s.add_argument("--text"); s.add_argument("--type"); s.add_argument("--value", type=float); s.add_argument("--low", type=float); s.add_argument("--high", type=float)
-    s.add_argument("--sources"); s.set_defaults(f=cmd_claim_supersede)
+    s.add_argument("--sources"); s.add_argument("--depends", help="новые основания (C-…)"); s.set_defaults(f=cmd_claim_supersede)
 
     s = sub.add_parser("impact", help="что затронет изменение утверждения/источника"); s.add_argument("id"); s.set_defaults(f=cmd_impact)
 
