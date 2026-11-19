@@ -1,20 +1,20 @@
 {
-  "stage": "06_choice",
+  "stage": "08_validation",
   "stages": {
     "01_framing": "done",
     "02_materials": "done",
     "03_research": "done",
     "04_situation": "done",
     "05_options": "done",
-    "06_choice": "waiting_human",
-    "07_strategy": "todo",
+    "06_choice": "done",
+    "07_strategy": "done",
     "08_validation": "todo",
     "09_plan": "todo",
     "10_deliverable": "todo",
     "11_decisions": "todo"
   },
-  "next_action": "Шаг 06: выбор руководителя",
+  "next_action": "Шаг 08: план проверки пилота — сравнение, выборка 1 760/3 276 групп, стоп-условия (отзыв согласия [C-078], ложные сигналы), порог ≥4 п.п. к концу Q2 / ≥3 п.п. к середине Q3",
   "open_questions": [],
-  "blocked_on_human": "Выбрать вариант для пилота: рекомендация — 2 «Сигнал до перебоя» с воротами Q1; альтернатива — 4+3 «рост групп»; отдельно — решение по цели ВП 285",
-  "updated": "2026-11-19T16:50:18+00:00"
+  "blocked_on_human": null,
+  "updated": "2026-11-19T18:39:44+00:00"
 }
