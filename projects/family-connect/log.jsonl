@@ -451,3 +451,9 @@
 {"ts": "2026-11-19T20:09:00+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/prompts.md", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:09:03+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Verify sizes and evaluator prompt text", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:09:07+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/docs/prompts.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:09:12+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit docs so far", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:09:28+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/video-script.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:09:31+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Verify history filter used in script", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:09:33+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/docs/video-script.md", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:09:36+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Get cost table and output size", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:10:03+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/costs.md", "session": "cd6ec98c"}
