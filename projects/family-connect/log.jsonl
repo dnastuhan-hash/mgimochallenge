@@ -396,3 +396,5 @@
 {"ts": "2026-11-19T19:53:02+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Add commitments with owners and due dates", "session": "cd6ec98c"}
 {"ts": "2026-11-19T19:53:10+00:00", "kind": "action", "stage": "11_decisions", "summary": "Шаг 11: реестр решений D-003…D-007 (proposed), 18 обязательств с ответственными и сроками; D-001 дополнен принятой ценой пользы", "model": "opus", "tokens_in": 30000, "tokens_out": 5000, "cost_usd": 0.22}
 {"ts": "2026-11-19T19:53:10+00:00", "kind": "stage", "stage": "11_decisions", "summary": "11_decisions → done"}
+{"ts": "2026-11-19T19:59:56+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Read team plan outline and tests", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:00:02+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Read repo plan and run tests", "session": "cd6ec98c"}
