@@ -323,3 +323,9 @@
 {"ts": "2026-11-19T18:57:41+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/sources/brief.md", "session": "cd6ec98c"}
 {"ts": "2026-11-19T18:57:46+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "Grep", "summary": "pattern=\"id\": \"C-0(38|40|43|54|62|76|75|101|50|30|31|41|42|095|95|97|98|103|57|72|104|65)\"", "session": "cd6ec98c"}
 {"ts": "2026-11-19T18:57:47+00:00", "kind": "action", "stage": "10_deliverable", "summary": "Шаг 10: собран deliverables/strategy.md из work/01–09; в 05_options уточнена оценка 4+3 [C-104]; запущены red-team и evaluator", "model": "opus", "tokens_in": 60000, "tokens_out": 14000, "cost_usd": 0.52}
+{"ts": "2026-11-19T18:57:49+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/claims.jsonl", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:58:23+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "SubagentHandback", "summary": "", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:58:25+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "Grep", "summary": "pattern=приостанов|согласи.*начислен|начислени", "session": "cd6ec98c"}
+{"ts": "2026-11-19T18:58:37+00:00", "kind": "claim", "stage": "10_deliverable", "summary": "C-105 [fact] Требования к операции (бриф, стр. 5): после выбора объёма человек видит, кому и сколько вы"}
+{"ts": "2026-11-19T18:58:37+00:00", "kind": "claim", "stage": "10_deliverable", "summary": "C-106 [forecast] Сигнал по календарю плана: предельные вложения, окупаемые за 24 мес., — 0,32 млн руб. [0…6"}
+{"ts": "2026-11-19T18:58:37+00:00", "kind": "tool", "stage": "10_deliverable", "tool": "Bash", "summary": "description=Register facts, apply evaluator fixes, check", "session": "cd6ec98c"}
