@@ -476,3 +476,8 @@
 {"ts": "2026-11-19T20:12:53+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Link PDF in README, test, check, commit", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:13:01+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Fresh clone, run quick start steps", "session": "cd6ec98c"}
 {"ts": "2026-11-21T12:29:26+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log update", "session": "cd6ec98c"}
+{"ts": "2026-11-21T12:29:40+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push remaining log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-21T16:56:50+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/docs/video-script.md", "session": "cd6ec98c"}
+{"ts": "2026-11-21T16:56:57+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Check use/init behaviour and source files", "session": "cd6ec98c"}
+{"ts": "2026-11-21T16:57:00+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Check whether init sets active project", "session": "cd6ec98c"}
+{"ts": "2026-11-21T16:57:38+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/video-script.md", "session": "cd6ec98c"}
