@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "dekanat", "runtimeExecutable": "node", "runtimeArgs": ["server/index.js", "--reset"], "port": 3000 }
+  ]
+}

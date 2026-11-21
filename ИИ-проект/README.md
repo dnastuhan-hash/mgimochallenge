@@ -22,7 +22,7 @@ Cursor, Codex, OpenCode. Ключи API, платные сервисы и `pip i
 среда (подписка или ключ самой среды).
 
 ```bash
-git clone <ссылка на репозиторий> && cd mgimochallenge
+git clone <ссылка на репозиторий> && cd mgimochallenge/ИИ-проект
 ```
 
 ```bash
