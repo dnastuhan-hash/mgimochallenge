@@ -473,3 +473,5 @@
 {"ts": "2026-11-19T20:12:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Render PDF pages to images", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:12:36+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Make contact sheet of PDF pages", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:12:39+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/tmp/claude-0/-home-user-mgimochallenge/cd6ec98c-5efa-587d-b79a-4428eca5ce93/scratchpad/sheet.png", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:12:53+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Link PDF in README, test, check, commit", "session": "cd6ec98c"}
+{"ts": "2026-11-19T20:13:01+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Fresh clone, run quick start steps", "session": "cd6ec98c"}
