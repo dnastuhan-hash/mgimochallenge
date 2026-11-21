@@ -1,0 +1,13 @@
+# Конфигурация для Amvera Cloud (российский хостинг, открывается без VPN).
+# Сверьте поля с актуальной документацией Amvera перед деплоем.
+meta:
+  environment: docker
+  toolchain:
+    name: docker
+    version: latest
+build:
+  dockerfile: Dockerfile
+  skip: false
+run:
+  persistenceMount: /data
+  containerPort: 3000
