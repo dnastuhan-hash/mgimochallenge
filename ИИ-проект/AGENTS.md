@@ -9,7 +9,7 @@
 
 ## 0. Начало любой сессии (обязательно)
 
-1. Выполни `python3 tools/sfp.py status`. Если проекта нет — спроси, начать ли новый (`sfp init <id> --title "..."`).
+1. Выполни `python3 tools/sfp.py status` (на Windows — `python tools/sfp.py status` или `.\sfp.cmd status`). Если проекта нет — спроси, начать ли новый (`sfp init <id> --title "..."`).
 2. Если проект есть — коротко (3–5 строк) скажи пользователю: на каком шаге остановились, что сделано, что дальше,
    есть ли решение, которого ждём от человека. Затем продолжай с `next_action`, **не переделывая выполненные шаги**
    (проверь `sfp history -n 15` — что уже сделано, чтобы не повторить действия).
@@ -119,7 +119,7 @@
 
 ## 9. Инструменты
 
-`python3 tools/sfp.py <команда>` (алиас `./sfp`):
+`python3 tools/sfp.py <команда>` (алиас `./sfp`; на Windows — `python …` и `.\sfp.cmd`):
 `status`, `stage`, `next`, `question`, `source add|list`, `claim add|list|retract|supersede`, `impact`,
 `decision add|commit|set|list`, `check`, `log`, `cost`, `history`, `search`, `route`, `export` (Markdown → HTML с подсказками по ссылкам C-/S-/D-). Справка: `--help` у любой команды.
 

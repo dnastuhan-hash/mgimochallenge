@@ -2,19 +2,22 @@
 import importlib.util
 import json
 import shutil
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 import pytest
 
+# дочерние процессы — в UTF-8 на любой ОС (на Windows иначе кодировка консоли, cp1251)
+UTF8_ENV = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
 ROOT = Path(__file__).resolve().parent.parent
 SFP = ROOT / "tools" / "sfp.py"
 PID = "zz-test-project"
 
 
 def run(*args, ok=True):
-    r = subprocess.run([sys.executable, str(SFP), "-P", PID, *args], capture_output=True, text=True, cwd=ROOT)
+    r = subprocess.run([sys.executable, str(SFP), "-P", PID, *args], capture_output=True, text=True, encoding="utf-8", env=UTF8_ENV, cwd=ROOT)
     if ok and r.returncode != 0:
         raise AssertionError(f"{args} → {r.returncode}\n{r.stdout}\n{r.stderr}")
     return r

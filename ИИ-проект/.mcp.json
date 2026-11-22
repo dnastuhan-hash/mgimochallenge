@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "sfp": {
-      "command": "python",
-      "args": ["tools/mcp_server.py"]
+      "command": "sh",
+      "args": ["tools/py.sh", "tools/mcp_server.py"]
     }
   }
 }

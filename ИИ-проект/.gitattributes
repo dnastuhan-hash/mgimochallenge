@@ -1,0 +1,5 @@
+# Концы строк не зависят от настроек Git на Windows
+*.sh  text eol=lf
+sfp   text eol=lf
+*.py  text eol=lf
+*.cmd text eol=crlf
