@@ -516,3 +516,4 @@
 {"ts": "2026-11-22T17:55:21+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:57:06+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Switch Windows command to explicit .\\sfp.cmd in docs", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:57:13+00:00", "kind": "action", "stage": "11_decisions", "summary": "export strategy.md → strategy.html"}
+{"ts": "2026-11-22T17:57:19+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Test, rebuild PDF, commit and push", "session": "cd6ec98c"}
