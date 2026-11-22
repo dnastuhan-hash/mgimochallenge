@@ -93,3 +93,12 @@ test('календарная ссылка не отдаёт персональн
   assert.ok(!ics.includes('Морозова'));
   assert.equal((await fetch(`${BASE}/cal/not-a-real-token-123456789.ics`)).status, 404);
 });
+
+test('ответ главной не трогает cookie сессии (регрессия: поле «session» в данных)', async () => {
+  const alina = await login('morozova', 'Demo-Student-1');
+  const r = await get('/api/home', alina);
+  assert.equal(r.status, 200);
+  assert.equal(r.headers.get('set-cookie'), null);
+  assert.ok((await r.json()).today);
+  assert.equal((await get('/api/me', alina)).status, 200);
+});

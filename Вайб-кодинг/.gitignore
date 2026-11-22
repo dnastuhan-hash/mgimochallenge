@@ -3,3 +3,4 @@ data/
 *.sqlite*
 secret.key
 .env
+dist-demo/

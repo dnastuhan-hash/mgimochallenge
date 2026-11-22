@@ -157,23 +157,34 @@ page(/^\/calendar$/, async (main) => {
   const draw = (cal) => {
     main.innerHTML = html`<div class="stack fade-in">
       <div class="card"><h3>Расписание в вашем календаре</h3><p class="small muted" style="margin-top:6px">Подпишитесь один раз — пары, переносы и сессия появятся в календаре телефона и будут обновляться сами. Дедлайны тестов в календарь не попадают, о них напомнит кабинет.</p></div>
-      ${cal.providers.map((p) => html`<div class="card"><div class="between"><div class="row"><div class="tile-ic ${p.id === 'yandex' ? 'danger' : p.id === 'google' ? '' : 'teal'}">${ic(p.id === 'other' ? 'copy' : 'calendar')}</div><b>${p.name}</b></div>
+      ${cal.demo ? html`<div class="card flat" style="background:var(--warn-soft)"><p class="small"><b>Демо-версия без сервера.</b> Подписка требует сервера, к которому обращаются Google и Яндекс, поэтому здесь кнопки подписки отключены. Скачайте файл .ics и импортируйте его в календарь. В серверной версии (npm start) подписка работает и обновляется сама.</p></div>` : ""}
+      ${cal.demo ? "" : cal.providers.map((p) => html`<div class="card"><div class="between"><div class="row"><div class="tile-ic ${p.id === 'yandex' ? 'danger' : p.id === 'google' ? '' : 'teal'}">${ic(p.id === 'other' ? 'copy' : 'calendar')}</div><b>${p.name}</b></div>
         <button class="btn sm" data-prov="${p.id}">${p.mode === 'copy' ? 'Скопировать' : 'Подключить'}</button></div>
         <ol class="small muted" style="margin:10px 0 0;padding-left:20px">${p.steps.map((s) => html`<li>${s}</li>`)}</ol></div>`)}
       <div class="card stack">
         <label class="field">Напоминание перед парой<select class="input" id="calrem">${[[0, 'Без напоминания'], [10, 'За 10 минут'], [15, 'За 15 минут'], [30, 'За 30 минут'], [60, 'За 1 час']].map(([v, t]) => html`<option value="${v}" ${state.prefs.calReminder === v ? 'selected' : ''}>${t}</option>`)}</select></label>
-        <div class="btns"><a class="btn ghost sm" href="${cal.https}?download=1">${ic('download')} Скачать .ics</a><button class="btn ghost sm" data-copy>${ic('copy')} Ссылка</button></div>
-        <p class="tiny faint">${ic('shield', 'tiny-ic')} Ссылка личная и открывает только расписание — без оценок и персональных данных. Если поделились ею случайно, сбросьте:</p>
-        <button class="btn danger sm" data-reset>${ic('refresh')} Сбросить ссылку</button>
+        <div class="btns"><button class="btn ghost sm" data-dl>${ic('download')} Скачать .ics</button>${cal.demo ? "" : html`<button class="btn ghost sm" data-copy>${ic('copy')} Ссылка</button>`}</div>
+        ${cal.demo ? '' : html`<p class="tiny faint">${ic('shield', 'tiny-ic')} Ссылка личная и открывает только расписание — без оценок и персональных данных. Если поделились ею случайно, сбросьте:</p>
+        <button class="btn danger sm" data-reset>${ic('refresh')} Сбросить ссылку</button>`}
       </div></div>`;
     $$('[data-prov]', main).forEach((b) => b.onclick = async () => {
       const p = cal.providers.find((x) => x.id === b.dataset.prov);
       if (p.mode !== 'link') { await copyText(cal.https); toast('Ссылка скопирована'); }
       if (p.mode !== 'copy') window.open(p.href, '_blank', 'noopener');
     });
-    $('[data-copy]', main).onclick = async () => { await copyText(cal.https); toast('Ссылка скопирована'); };
+    $('[data-copy]', main)?.addEventListener('click', async () => { await copyText(cal.https); toast('Ссылка скопирована'); });
+    $('[data-dl]', main).onclick = async () => {
+      try {
+        const r = await fetch(new URL(cal.https).pathname);
+        if (!r.ok) throw new Error();
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([await r.text()], { type: 'text/calendar' }));
+        a.download = 'raspisanie.ics'; document.body.append(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+      } catch { toast('Не удалось скачать файл', 'err'); }
+    };
     $('#calrem', main).onchange = (e) => { savePrefs({ ...state.prefs, calReminder: Number(e.target.value) }); toast('Сохранено. Календарь обновится при следующей синхронизации'); };
-    $('[data-reset]', main).onclick = async () => {
+    if ($('[data-reset]', main)) $('[data-reset]', main).onclick = async () => {
       if (!confirm('Старая ссылка перестанет работать, календари нужно будет подключить заново. Сбросить?')) return;
       await api('/api/calendar/reset', { method: 'POST' });
       toast('Новая ссылка создана'); draw(await api('/api/calendar'));
@@ -488,7 +499,7 @@ page(/^\/card$/, async (main) => {
   const draw = async () => {
     const c = await api('/api/card');
     main.innerHTML = html`<div class="stack fade-in" style="max-width:440px;margin:0 auto">${hiddenBanner('card')}
-      <div class="card hero stack"><div class="between"><span class="row"><img src="/logo.svg" alt="" width="28" height="28"><b>Студенческий билет</b></span><span class="tiny muted">концепт</span></div>
+      <div class="card hero stack"><div class="between"><span class="row"><img src="logo.svg" alt="" width="28" height="28"><b>Студенческий билет</b></span><span class="tiny muted">концепт</span></div>
         <div class="row"><span class="avatar lg" style="background:rgba(255,255,255,.2)">${initials(c.fullName)}</span><div><h2>${c.fullName}</h2><p class="muted small">${c.faculty}</p></div></div>
         <div class="kpis"><div class="kpi"><b>${c.group}</b><span>группа</span></div><div class="kpi"><b>${c.course}</b><span>курс</span></div><div class="kpi"><b style="font-size:14px">${c.recordBook}</b><span>№ билета</span></div></div>
         <p class="tiny muted">Действителен до ${c.validUntil} · ${c.funding === 'budget' ? 'бюджет' : 'договор'}</p></div>

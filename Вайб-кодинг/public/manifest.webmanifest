@@ -1,10 +1,10 @@
 {
   "name": "Деканат Next (концепт)",
   "short_name": "Деканат Next",
-  "start_url": "/#/home",
+  "start_url": "./#/home",
   "display": "standalone",
   "background_color": "#f6f6fb",
   "theme_color": "#5b4cf0",
   "lang": "ru",
-  "icons": [{ "src": "/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+  "icons": [{ "src": "logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

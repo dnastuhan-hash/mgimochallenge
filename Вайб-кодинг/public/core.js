@@ -168,7 +168,7 @@ function renderShell() {
   $('#app').innerHTML = html`
   <div class="shell">
     <nav class="sidebar" aria-label="Разделы">
-      <a class="brand" href="#/home"><img src="/logo.svg" alt=""><span>Деканат Next</span></a>
+      <a class="brand" href="#/home"><img src="logo.svg" alt=""><span>Деканат Next</span></a>
       ${sideList.map((s) => html`<a href="#/${s.route || s.id}" data-nav="${s.id}">${ic(s.icon)}<span>${s.title}</span></a>`)}
       <div class="sep"></div>
       ${state.role === 'student' ? html`<a href="#/notifications" data-nav="notifications">${ic('bell')}<span>Уведомления</span><span class="count" data-unread hidden></span></a>` : ''}
@@ -197,7 +197,7 @@ function setTitle(title, back) {
   document.title = `${title} — Деканат Next`;
   $('#page-title').textContent = title;
   const b = $('[data-back]');
-  b.innerHTML = back ? html`<a class="iconbtn" href="${back}" aria-label="Назад">${ic('left')}</a>` : html`<img src="/logo.svg" alt="" width="30" height="30">`;
+  b.innerHTML = back ? html`<a class="iconbtn" href="${back}" aria-label="Назад">${ic('left')}</a>` : html`<img src="logo.svg" alt="" width="30" height="30">`;
 }
 function markNav(id) {
   $$('[data-nav]').forEach((a) => a.classList.toggle('active', a.dataset.nav === id));
@@ -254,8 +254,9 @@ function renderLogin(errMsg) {
   document.title = 'Вход — Деканат Next';
   $('#app').innerHTML = html`
   <div class="login-wrap"><div class="login fade-in">
-    <div class="row"><img src="/logo.svg" alt="" width="52" height="52"><div><h1>Деканат Next</h1><p class="muted small">Личный кабинет студента</p></div></div>
+    <div class="row"><img src="logo.svg" alt="" width="52" height="52"><div><h1>Деканат Next</h1><p class="muted small">Личный кабинет студента</p></div></div>
     <span class="badge-concept">${ic('info')} Концепт для конкурса. Не официальный сервис вуза, все данные вымышлены</span>
+    ${window.DEKANAT_DEMO ? html`<div class="card flat small" style="background:var(--surface-2)"><b>Демо-версия для просмотра.</b> <span class="muted">Сервер кабинета работает прямо в вашем браузере, данные хранятся только на этом устройстве. Полная серверная версия с защитой на сервере лежит в репозитории (npm start).</span> <button class="btn ghost sm" type="button" data-demo-reset style="margin-top:8px">${ic('refresh')} Сбросить демо-данные</button></div>` : ''}
     <form class="card stack" id="login-form" novalidate>
       <label class="field">Логин<input class="input" name="login" autocomplete="username" autocapitalize="none" required></label>
       <label class="field">Пароль<input class="input" name="password" type="password" autocomplete="current-password" required></label>
@@ -268,6 +269,7 @@ function renderLogin(errMsg) {
     </div>
   </div></div>`;
   const f = $('#login-form');
+  $('[data-demo-reset]')?.addEventListener('click', () => { if (confirm('Вернуть демо-данные к исходным в этом браузере?')) window.dekanatDemoReset(); });
   $$('[data-demo]').forEach((b) => b.onclick = () => { const d = DEMO.find((x) => x.login === b.dataset.demo); f.login.value = d.login; f.password.value = d.password; f.querySelector('button').focus(); });
   f.onsubmit = async (e) => {
     e.preventDefault();
@@ -307,7 +309,7 @@ function renderOnboarding() {
     const p = presetPrefs(state.me, preset);
     $('#app').innerHTML = html`
     <div class="login-wrap"><div class="login fade-in" style="max-width:520px">
-      <div class="row"><img src="/logo.svg" alt="" width="44" height="44"><span class="badge-concept">${ic('info')} Концепт для конкурса</span></div>
+      <div class="row"><img src="logo.svg" alt="" width="44" height="44"><span class="badge-concept">${ic('info')} Концепт для конкурса</span></div>
       <div><h1>Привет, ${firstName(state.me.fullName)}!</h1><p class="muted" style="margin-top:6px">Какой кабинет вам удобнее? Лишние разделы спрячем — всегда можно вернуть в «Профиль → Разделы кабинета».</p></div>
       <div class="stack">${Object.entries(PRESETS).map(([k, v]) => html`<button class="preset ${k === preset ? 'active' : ''}" data-preset="${k}"><b>${v.title}</b><span class="small muted">${v.desc}</span></button>`)}</div>
       <div class="card flat"><p class="small muted" style="margin-bottom:8px">Будет в кабинете:</p><div class="btns">${p.sections.filter((s) => s.visible).map((s) => pill(secById(s.id).title, 'primary', secById(s.id).icon))}</div>

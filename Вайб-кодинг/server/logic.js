@@ -200,7 +200,7 @@ export function testsFor(db, user) {
     let result = st?.status === 'done' ? 'done' : state === 'closed' ? 'missed' : null;
     return {
       id: t.id, subject: t.subject, teacher: t.teacher, title: t.title, opensAt, closesAt, timeLimit: t.time_limit, attempts: t.attempts,
-      url: `/lms-demo.html?test=${t.id}`, source: lmsAdapters[t.source]?.name || t.source, state, result, score: st?.score || null,
+      url: `lms-demo.html?test=${t.id}`, source: lmsAdapters[t.source]?.name || t.source, state, result, score: st?.score || null,
       hot: state === 'open' && result !== 'done' && closesAt - now < 24 * 3600_000,
     };
   });

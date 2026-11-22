@@ -19,15 +19,16 @@ const esc = (s) => String(s ?? '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').r
 const stamp = (ms) => new Date(ms).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
 
 /** Перенос строк по 75 октетов (требование RFC 5545, важно для кириллицы). */
+const dec = new TextDecoder();
 function fold(line) {
-  const buf = Buffer.from(line, 'utf8');
+  const buf = new TextEncoder().encode(line); // без Buffer — модуль работает и в браузере
   if (buf.length <= 75) return line;
   const parts = [];
   let start = 0, limit = 75;
   while (start < buf.length) {
     let end = Math.min(start + limit, buf.length);
     while (end < buf.length && (buf[end] & 0xc0) === 0x80) end--; // не резать UTF-8 символ
-    parts.push(buf.subarray(start, end).toString('utf8'));
+    parts.push(dec.decode(buf.subarray(start, end)));
     start = end;
     limit = 74;
   }

@@ -22,7 +22,9 @@ cd mgimochallenge/ИИ-проект
 
 Подробнее — в [`ИИ-проект/README.md`](ИИ-проект/README.md). Итоговый документ: [`ИИ-проект/projects/family-connect/deliverables/strategy.md`](ИИ-проект/projects/family-connect/deliverables/strategy.md).
 
-**Вайб-кодинг:**
+**Вайб-кодинг** — открыть без установки: **https://dnastuhan-hash.github.io/mgimochallenge/** (демо-версия, работает в браузере).
+
+Запуск полной серверной версии:
 
 ```bash
 cd mgimochallenge/Вайб-кодинг
