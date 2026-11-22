@@ -17,3 +17,6 @@
 {"ts": "2026-11-22T18:39:58+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-011 [assumption] Первый сценарий — для семейных групп; владельцы нескольких номеров получают прогноз «без и"}
 {"ts": "2026-11-22T18:39:58+00:00", "kind": "stage", "stage": "01_framing", "summary": "01_framing → waiting_human: подтвердить постановку и ответить на 4 вопроса (данные, рамка, family-connect, веб)"}
 {"ts": "2026-11-22T18:39:58+00:00", "kind": "action", "stage": "01_framing", "summary": "Создан проект demo-live, бриф зарегистрирован (S-001), карточка постановки work/01_framing.md, 11 утверждений, первичная раскладка отставания", "model": "claude-opus-5-5", "tokens_in": 40000, "tokens_out": 4000, "cost_usd": 0.24}
+{"ts": "2026-11-22T18:40:05+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit and push the new project", "session": "b6110067"}
+{"ts": "2026-11-22T18:40:08+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Merge remote branch changes and push again", "session": "b6110067"}
+{"ts": "2026-11-22T18:40:15+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Resolve log conflict by union and push", "session": "b6110067"}
