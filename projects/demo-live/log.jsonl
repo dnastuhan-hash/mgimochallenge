@@ -30,3 +30,5 @@
 {"ts": "2026-11-22T19:08:04+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Check tests for Windows-specific pitfalls", "session": "cd6ec98c"}
 {"ts": "2026-11-22T19:08:18+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Make test subprocesses UTF-8, run tests incl. non-UTF-8 locale", "session": "cd6ec98c"}
 {"ts": "2026-11-22T19:08:22+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Show failures under non-UTF-8 locale", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:08:31+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit and push test encoding fix", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:08:35+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Fetch and merge new remote commits", "session": "cd6ec98c"}
