@@ -1,0 +1,12 @@
+{
+  "gap_active": 1000,
+  "share_active": {
+    "plan": 0.6667,
+    "estimate": 0.6154,
+    "no_change_next": 0.625,
+    "target_next": 0.6667
+  },
+  "from_fewer_connected": 641,
+  "from_lower_activity_share": 359,
+  "check_sum": 1000
+}
