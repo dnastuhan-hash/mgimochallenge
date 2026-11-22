@@ -3,5 +3,5 @@ description: Стратег Фабрики продуктов — постоян
 alwaysApply: true
 ---
 Прочитай и выполняй инструкции из файла AGENTS.md в корне репозитория.
-В начале сессии выполни `python3 tools/sfp.py status` и продолжи работу с сохранённого шага.
+В начале сессии выполни `python3 tools/sfp.py status` (на Windows — `python tools/sfp.py status`) и продолжи работу с сохранённого шага.
 Навыки шагов процесса лежат в `.claude/skills/<name>/SKILL.md` — читай нужный перед началом шага.

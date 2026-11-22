@@ -483,3 +483,11 @@
 {"ts": "2026-11-21T16:57:38+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/docs/video-script.md", "session": "cd6ec98c"}
 {"ts": "2026-11-21T16:57:45+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Count narration words, commit and push", "session": "cd6ec98c"}
 {"ts": "2026-11-21T16:58:00+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:19:05+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:24:24+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Find python3 references in configs and instructions", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:24:37+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Add Windows wrapper and portable Python launcher", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:24:42+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Test guard block exit code via launcher", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:24:57+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Add Windows notes to instruction files", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:25:02+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/README.md", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:25:05+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/docs/limitations.md", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:25:13+00:00", "kind": "action", "stage": "11_decisions", "summary": "export strategy.md → strategy.html"}

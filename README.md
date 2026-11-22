@@ -33,6 +33,12 @@ git clone <ссылка на репозиторий> && cd mgimochallenge
 python3 -m pytest -q tests
 ```
 
+**Windows (PowerShell или cmd):** вместо `./sfp` пишите `.\sfp` — это обёртка `sfp.cmd`, она сама найдёт `python` или
+`py` и включит UTF-8. Можно и напрямую: `python tools/sfp.py status`. Python ставьте с python.org с галочкой
+«Add python.exe to PATH». Для хуков и MCP в Claude Code на Windows замените `python3` на `python`
+в `.claude/settings.json` и `.mcp.json`, либо используйте переносимый запуск `sh tools/py.sh <скрипт>`
+(подробности — [`docs/limitations.md`](docs/limitations.md)).
+
 `./sfp status` показывает активный проект, шаг, на котором остановились, и следующее действие. Тесты — 26 проверок
 реестров, правил доказательности, пересмотра, расчётов и экспорта (необязательно, нужен `pytest`).
 
