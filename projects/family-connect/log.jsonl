@@ -519,3 +519,5 @@
 {"ts": "2026-11-22T17:57:19+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Test, rebuild PDF, commit and push", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:57:31+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
 {"ts": "2026-11-22T18:04:52+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:08:57+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Show history, run checks, list decisions", "session": "ca109a5b"}
+{"ts": "2026-11-22T18:09:02+00:00", "kind": "note", "stage": "11_decisions", "summary": "Сессия сопровождения: sfp check 0 ошибок; ближайшие обязательства D-003 до 15.01.2027; ждём подтверждения D-003 руководителем"}
