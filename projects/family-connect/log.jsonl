@@ -519,3 +519,7 @@
 {"ts": "2026-11-22T17:57:19+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Test, rebuild PDF, commit and push", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:57:31+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
 {"ts": "2026-11-22T18:04:52+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:39:06+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Show project status, init help, and framing skill", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:09+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Read framing methodology and the brief", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:11+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Read framing methodology", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:13+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/sources/brief.md", "session": "b6110067"}
