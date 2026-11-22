@@ -14,15 +14,15 @@
   },
   "hooks": {
     "SessionStart": [
-      {"hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/session_start.py\""}]}
+      {"hooks": [{"type": "command", "command": "sh\"$CLAUDE_PROJECT_DIR/tools/py.sh\"\"$CLAUDE_PROJECT_DIR/tools/hooks/session_start.py\""}]}
     ],
     "PreToolUse": [
       {"matcher": "WebFetch|WebSearch|Write|Edit|MultiEdit",
-       "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/guard.py\""}]}
+       "hooks": [{"type": "command", "command": "sh\"$CLAUDE_PROJECT_DIR/tools/py.sh\"\"$CLAUDE_PROJECT_DIR/tools/hooks/guard.py\""}]}
     ],
     "PostToolUse": [
       {"matcher": "*",
-       "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hooks/log_tool.py\""}]}
+       "hooks": [{"type": "command", "command": "\sh\"$CLAUDE_PROJECT_DIR/tools/py.sh\"\"$CLAUDE_PROJECT_DIR/tools/hooks/log_tool.py\""}]}
     ]
   }
 }
