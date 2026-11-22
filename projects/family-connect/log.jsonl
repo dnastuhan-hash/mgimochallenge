@@ -512,3 +512,4 @@
 {"ts": "2026-11-22T17:54:43+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Run the three hook commands as configured", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:54:56+00:00", "kind": "action", "stage": "11_decisions", "summary": "export strategy.md → strategy.html"}
 {"ts": "2026-11-22T17:55:00+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Update docs, run tests, rebuild PDF", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:55:07+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push settings and docs changes", "session": "cd6ec98c"}
