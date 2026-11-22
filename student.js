@@ -66,7 +66,7 @@ page(/^\/home$/, async (main) => {
     </div>` : ''}
 
     ${isVisible('schedule') ? html`<div class="card">
-      <div class="card-h"><h3>${todayLessons.length ? 'Сегодня' : d.nextDay ? `Сегодня пар нет · ${fmtDate(d.nextDay.date, true)}` : 'Сегодня пар нет'}</h3><a href="#/schedule">Неделя ${ic('right')}</a></div>
+      <div class="card-h"><h3>${todayLessons.length ? 'Сегодня' : d.nextDay ? `Ближайшие пары · ${fmtDate(d.nextDay.date, true)}` : 'Сегодня пар нет'}</h3><a href="#/schedule">Неделя ${ic('right')}</a></div>
       ${(todayLessons.length ? todayLessons : d.nextDay?.lessons || []).map((l) => lessonRow(l))}
       ${!todayLessons.length && !d.nextDay ? emptyState('calendar', 'Свободная неделя', '') : ''}
     </div>` : ''}
