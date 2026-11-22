@@ -1,34 +1,28 @@
-{"ts": "2026-11-22T18:10:53+00:00", "kind": "action", "stage": "01_framing", "summary": "Создан проект «Семейные группы: почему 4 000 вместо 5 000 и что делать в следующем году»"}
-{"ts": "2026-11-22T18:10:53+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Create demo-live project and read framing method", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:10:53+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Outline brief and find family-group mentions", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:10:55+00:00", "kind": "tool", "stage": "01_framing", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/sources/brief.md", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:11:02+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Check source/claim syntax and prior framing format", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:11:12+00:00", "kind": "stage", "stage": "01_framing", "summary": "01_framing → in_progress"}
-{"ts": "2026-11-22T18:11:12+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Start framing, copy brief, run gap decomposition", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "source", "stage": "01_framing", "summary": "S-001 Бриф «Связь для близких и собственных устройств» (PDF)"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "source", "stage": "01_framing", "summary": "S-002 Бриф — извлечённый текст с номерами страниц"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "source", "stage": "01_framing", "summary": "S-003 Разложение отставания активных групп"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-001 [fact] Активные семейные группы за последний месяц базового года: план 5 000, оценка 4 000"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-002 [fact] Подключённые семейные группы на конец базового года: план 7 500, оценка 6 500"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-003 [fact] Активация за 14 дней среди групп, созданных в последнем квартале: план 50 %, оценка 42 %"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-004 [fact] Валовая прибыль базового года: план 282, оценка 275 млн руб."}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-005 [fact] Плановый год, цели (не ниже): ВП 285 млн руб., активные группы 8 000, подключённые 12 000,"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-006 [fact] Решения руководителя: конец Q1 — выделять ли ресурсы на пилот; конец Q2 с финансами — расш"}
-{"ts": "2026-11-22T18:11:20+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-007 [fact] Частоты причин перебоев и истории отдельных клиентов в брифе не даны; разбивки по каналам "}
-{"ts": "2026-11-22T18:11:21+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Register sources and brief facts", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:11:27+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-008 [inference] Из отставания в 1 000 активных групп ≈ 640 объясняется меньшим числом подключённых групп ("}
-{"ts": "2026-11-22T18:11:27+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-009 [hypothesis] Нехватка подключённых групп возникает в основном на шаге «создана → участник принял пригла"}
-{"ts": "2026-11-22T18:11:27+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-010 [assumption] Получатель результата — руководитель направления и финансовая команда; им важны деньги, ри"}
-{"ts": "2026-11-22T18:11:27+00:00", "kind": "stage", "stage": "01_framing", "summary": "01_framing → waiting_human: подтвердить постановку: решение/срок, рамки (только семьи или и владельцы номеров), доступ к выгрузкам, форма результата"}
-{"ts": "2026-11-22T18:11:27+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Add inference, hypothesis, set waiting_human", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:11:37+00:00", "kind": "tool", "stage": "01_framing", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/projects/demo-live/work/01_framing.md", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:11:40+00:00", "kind": "action", "stage": "01_framing", "summary": "Создан проект demo-live; шаг 01: карточка постановки, 3 источника, 10 утверждений, расчёт разложения разрыва", "model": "claude-opus", "tokens_in": 30000, "tokens_out": 4000}
-{"ts": "2026-11-22T18:12:03+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit and push demo-live project", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:12:06+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Merge remote branch and push again", "session": "f51ddc23"}
-{"ts": "2026-11-22T18:16:15+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit local log, then merge", "session": "cd6ec98c"}
-{"ts": "2026-11-22T18:16:36+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit remaining log line and push", "session": "cd6ec98c"}
-{"ts": "2026-11-22T19:08:04+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Check tests for Windows-specific pitfalls", "session": "cd6ec98c"}
-{"ts": "2026-11-22T19:08:18+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Make test subprocesses UTF-8, run tests incl. non-UTF-8 locale", "session": "cd6ec98c"}
-{"ts": "2026-11-22T19:08:22+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Show failures under non-UTF-8 locale", "session": "cd6ec98c"}
-{"ts": "2026-11-22T19:08:31+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit and push test encoding fix", "session": "cd6ec98c"}
-{"ts": "2026-11-22T19:08:35+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Fetch and merge new remote commits", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:39:17+00:00", "kind": "action", "stage": "01_framing", "summary": "Создан проект «Отставание семейных групп: причины и план на следующий год»"}
+{"ts": "2026-11-22T18:39:17+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Initialize demo-live project and show help", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "stage", "stage": "01_framing", "summary": "01_framing → in_progress"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "source", "stage": "01_framing", "summary": "S-001 Бриф: Связь для близких и собственных устройств (учебные данные)"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-001 [fact] Активные семейные группы за последний месяц базового года: оценка 4 000 при плане 5 000"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-002 [fact] Подключённые семейные группы на конец базового года: оценка 6 500 при плане 7 500"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-003 [fact] Доля групп, активированных за 14 дней, среди созданных в последнем квартале: оценка 42 % п"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-004 [fact] Валовая прибыль базового года: оценка 275 млн руб. при плане 282; без изменений в плановом"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-005 [fact] Цели планового года: активных групп ≥ 8 000, подключённых ≥ 12 000, владельцев нескольких "}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-006 [fact] Решения руководителя: к концу Q1 — выделять ли людей и деньги на пилот; к концу Q2 вместе "}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-007 [fact] Ресурсы: на Q2 предварительно 3 чел.-мес. разработки; дизайнер и аналитик по 0,5 ставки ещ"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-008 [fact] Частоты причин отставания и истории отдельных клиентов в брифе не даны"}
+{"ts": "2026-11-22T18:39:30+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-009 [inference] Активность в последнем месяце (активных/подключённых): база 4 000/6 500 ≈ 62 %, план был 5"}
+{"ts": "2026-11-22T18:39:31+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-010 [inference] Отставание по активным (−1 000) раскладывается примерно на две части: меньше подключённых "}
+{"ts": "2026-11-22T18:39:31+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Register brief source and key claims", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:54+00:00", "kind": "tool", "stage": "01_framing", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/projects/demo-live/work/01_framing.md", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:58+00:00", "kind": "claim", "stage": "01_framing", "summary": "C-011 [assumption] Первый сценарий — для семейных групп; владельцы нескольких номеров получают прогноз «без и"}
+{"ts": "2026-11-22T18:39:58+00:00", "kind": "stage", "stage": "01_framing", "summary": "01_framing → waiting_human: подтвердить постановку и ответить на 4 вопроса (данные, рамка, family-connect, веб)"}
+{"ts": "2026-11-22T18:39:58+00:00", "kind": "action", "stage": "01_framing", "summary": "Создан проект demo-live, бриф зарегистрирован (S-001), карточка постановки work/01_framing.md, 11 утверждений, первичная раскладка отставания", "model": "claude-opus-5-5", "tokens_in": 40000, "tokens_out": 4000, "cost_usd": 0.24}
+{"ts": "2026-11-22T18:40:05+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit and push the new project", "session": "b6110067"}
+{"ts": "2026-11-22T18:40:08+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Merge remote branch changes and push again", "session": "b6110067"}
+{"ts": "2026-11-22T18:40:15+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Resolve log conflict by union and push", "session": "b6110067"}
+{"ts": "2026-11-22T18:40:20+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit log update and push", "session": "b6110067"}
+{"ts": "2026-11-22T19:03:37+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit log, inspect remote commits, merge", "session": "1c0a56fc"}
+{"ts": "2026-11-22T19:03:43+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Compare active project and log versions", "session": "1c0a56fc"}
+{"ts": "2026-11-22T19:03:54+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Union-merge log lines, commit merge, push", "session": "1c0a56fc"}
+{"ts": "2026-11-22T19:04:01+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit remaining log and push", "session": "1c0a56fc"}
+{"ts": "2026-11-22T19:04:22+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Find how to switch active project", "session": "1c0a56fc"}
