@@ -520,3 +520,6 @@
 {"ts": "2026-11-22T19:03:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Merge remote branch and push again", "session": "1c0a56fc"}
 {"ts": "2026-11-22T19:04:26+00:00", "kind": "human", "stage": "11_decisions", "summary": "Человек выбрал продолжить family-connect (demo-live оставлен на шаге 01 без изменений); ждём решения по D-003"}
 {"ts": "2026-11-22T19:04:31+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push project switch", "session": "1c0a56fc"}
+{"ts": "2026-11-22T19:08:47+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit local, merge, list conflicts", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:08:50+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Inspect demo-live log conflict sides", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:09:01+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Resolve with remote log, verify, push", "session": "cd6ec98c"}
