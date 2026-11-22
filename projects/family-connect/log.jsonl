@@ -531,3 +531,6 @@
 {"ts": "2026-11-22T19:48:35+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Validate main's settings.json", "session": "cd6ec98c"}
 {"ts": "2026-11-22T19:49:26+00:00", "kind": "tool", "stage": "11_decisions", "tool": "AskUserQuestion", "summary": "", "session": "cd6ec98c"}
 {"ts": "2026-11-22T19:49:37+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Diagnose worktree/rsync failure", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:49:44+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Replace ИИ-проект in main worktree with branch content", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:49:57+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Verify updated main: JSON, tests, sfp, hooks, MCP", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:50:17+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Fresh clone of main, verify, check public access", "session": "cd6ec98c"}
