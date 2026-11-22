@@ -23,3 +23,5 @@
 {"ts": "2026-11-22T18:11:27+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Add inference, hypothesis, set waiting_human", "session": "f51ddc23"}
 {"ts": "2026-11-22T18:11:37+00:00", "kind": "tool", "stage": "01_framing", "tool": "Write", "summary": "file_path=/home/user/mgimochallenge/projects/demo-live/work/01_framing.md", "session": "f51ddc23"}
 {"ts": "2026-11-22T18:11:40+00:00", "kind": "action", "stage": "01_framing", "summary": "Создан проект demo-live; шаг 01: карточка постановки, 3 источника, 10 утверждений, расчёт разложения разрыва", "model": "claude-opus", "tokens_in": 30000, "tokens_out": 4000}
+{"ts": "2026-11-22T18:12:03+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Commit and push demo-live project", "session": "f51ddc23"}
+{"ts": "2026-11-22T18:12:06+00:00", "kind": "tool", "stage": "01_framing", "tool": "Bash", "summary": "description=Merge remote branch and push again", "session": "f51ddc23"}
