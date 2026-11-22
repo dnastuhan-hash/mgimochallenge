@@ -1,5 +1,5 @@
 @echo off
-rem Windows wrapper (cmd / PowerShell): .\sfp status  -- same as ./sfp on Linux/macOS
+rem Windows wrapper (cmd / PowerShell): .\sfp.cmd status  -- same as ./sfp on Linux/macOS
 setlocal
 set PYTHONUTF8=1
 chcp 65001 >nul

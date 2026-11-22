@@ -33,7 +33,7 @@ git clone <ссылка на репозиторий> && cd mgimochallenge
 python3 -m pytest -q tests
 ```
 
-**Windows (PowerShell или cmd):** вместо `./sfp` пишите `.\sfp` — это обёртка `sfp.cmd`, она сама найдёт `python` или
+**Windows (PowerShell или cmd):** вместо `./sfp` пишите `.\sfp.cmd` — это обёртка `sfp.cmd`, она сама найдёт `python` или
 `py` и включит UTF-8. Можно и напрямую: `python tools/sfp.py status`. Python ставьте с python.org с галочкой
 «Add python.exe to PATH». Хуки и MCP-сервер запускаются через `sh tools/py.sh`: скрипт сам выбирает рабочий
 `python3`, `python` или `py` (на Windows — через Git Bash, который нужен Claude Code). Подробности —

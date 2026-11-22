@@ -42,7 +42,7 @@
 
 ## Windows
 
-- CLI: `.\sfp <команда>` (обёртка `sfp.cmd`) или `python tools/sfp.py <команда>`.
+- CLI: `.\sfp.cmd <команда>` (обёртка `sfp.cmd`) или `python tools/sfp.py <команда>`.
 - Хуки (`.claude/settings.json`) и MCP-сервер (`.mcp.json`) запускаются через `sh tools/py.sh`. Скрипт берёт первый
   рабочий `python3`, `python` или `py` версии 3.11+ и отсеивает заглушку Microsoft Store. На Windows нужен `sh` из
   Git for Windows (его требует и сам Claude Code). Если MCP-сервер не стартует, потому что `sh` не найден в PATH,
