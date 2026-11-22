@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "sfp": {
-      "command": "python3",
+      "command": "python",
       "args": ["tools/mcp_server.py"]
     }
   }
