@@ -523,3 +523,11 @@
 {"ts": "2026-11-22T19:08:47+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit local, merge, list conflicts", "session": "cd6ec98c"}
 {"ts": "2026-11-22T19:08:50+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Inspect demo-live log conflict sides", "session": "cd6ec98c"}
 {"ts": "2026-11-22T19:09:01+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Resolve with remote log, verify, push", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:09:16+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:48:12+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Check what main contains vs work branch", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:48:16+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Inspect main branch contents and history", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:48:25+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Diff main's ИИ-проект folder against branch", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:48:29+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=See main's config edits and root README", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:48:35+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Validate main's settings.json", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:49:26+00:00", "kind": "tool", "stage": "11_decisions", "tool": "AskUserQuestion", "summary": "", "session": "cd6ec98c"}
+{"ts": "2026-11-22T19:49:37+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Diagnose worktree/rsync failure", "session": "cd6ec98c"}
