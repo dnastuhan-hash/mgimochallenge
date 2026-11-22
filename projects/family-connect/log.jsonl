@@ -45,18 +45,9 @@
 {"ts": "2026-11-19T16:39:45+00:00", "kind": "tool", "stage": "03_research", "tool": "Bash", "summary": "cmd=c(){ ./sfp claim add \"$@\" | tail -1; } c \"Базовый год отстаёт от плана: активные группы −20 %, подключённые −13 %, владельцы −20 %, активаци", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:03+00:00", "kind": "tool", "stage": "03_research", "tool": "Bash", "summary": "cmd=P=projects/family-connect/interviews && cat > $P/guide.md <<'EOF' # Гайд интервью: «последний случай» (семьи и владельцы нескольких номеров)", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:15+00:00", "kind": "tool", "stage": "03_research", "tool": "Agent", "summary": "subagent_type=synthetic-respondent", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:15+00:00", "kind": "tool", "stage": "03_research", "tool": "Agent", "summary": "subagent_type=synthetic-respondent", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:15+00:00", "kind": "tool", "stage": "03_research", "tool": "Agent", "summary": "subagent_type=synthetic-respondent", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:15+00:00", "kind": "tool", "stage": "03_research", "tool": "Agent", "summary": "subagent_type=synthetic-respondent", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:15+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/personas.md", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:16+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/personas.md", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:16+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/personas.md", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:16+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/guide.md", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:16+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/guide.md", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:16+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/guide.md", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:16+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/personas.md", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:16+00:00", "kind": "tool", "stage": "03_research", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/interviews/guide.md", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:40:34+00:00", "kind": "tool", "stage": "03_research", "tool": "SubagentHandback", "summary": "", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:34+00:00", "kind": "tool", "stage": "03_research", "tool": "SubagentHandback", "summary": "", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:39+00:00", "kind": "tool", "stage": "03_research", "tool": "SubagentHandback", "summary": "", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:40:40+00:00", "kind": "claim", "stage": "03_research", "summary": "C-029 [hypothesis] Организатор узнаёт о нехватке интернета у близкого из просьбы о помощи, когда участник уже"}
@@ -137,7 +128,6 @@
 {"ts": "2026-11-19T16:46:10+00:00", "kind": "tool", "stage": "05_options", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/calc/economics_out.md", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:46:12+00:00", "kind": "tool", "stage": "05_options", "tool": "Grep", "summary": "pattern=\"id\": ?\"C-0(1[3-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9])\"", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:46:14+00:00", "kind": "tool", "stage": "05_options", "tool": "Grep", "summary": "pattern=\"id\": ?\"C-0(0[1-9]|1[0-2]|29|50|51|54|58|62|63|65|67)\"", "session": "f361ad2b"}
-{"ts": "2026-11-19T16:46:16+00:00", "kind": "tool", "stage": "05_options", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/claims.jsonl", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:46:16+00:00", "kind": "tool", "stage": "05_options", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/claims.jsonl", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:46:17+00:00", "kind": "tool", "stage": "05_options", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/claims.jsonl", "session": "f361ad2b"}
 {"ts": "2026-11-19T16:46:18+00:00", "kind": "tool", "stage": "05_options", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/claims.jsonl", "session": "f361ad2b"}
@@ -428,7 +418,6 @@
 {"ts": "2026-11-19T20:06:50+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Inspect subagents, MCP tools, hooks", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:06:58+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Prepare anonymized copies for comparison", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:07:11+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Agent", "summary": "subagent_type=evaluator", "session": "cd6ec98c"}
-{"ts": "2026-11-19T20:07:11+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Agent", "summary": "subagent_type=evaluator", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:07:12+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/eval/rubric.md", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:07:12+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/sources/brief.md", "session": "cd6ec98c"}
 {"ts": "2026-11-19T20:07:12+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/eval/blind/doc_A.md", "session": "cd6ec98c"}
@@ -504,9 +493,6 @@
 {"ts": "2026-11-22T17:30:53+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log update", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:31:10+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
-{"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
-{"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
-{"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:54:37+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Validate JSON, switch MCP to launcher, test handshake", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:54:43+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=hook self-test", "session": ""}
 {"ts": "2026-11-22T17:54:43+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Run the three hook commands as configured", "session": "cd6ec98c"}
@@ -519,6 +505,16 @@
 {"ts": "2026-11-22T17:57:19+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Test, rebuild PDF, commit and push", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:57:31+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
 {"ts": "2026-11-22T18:04:52+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:08:57+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Show history, run checks, list decisions", "session": "ca109a5b"}
+{"ts": "2026-11-22T18:09:02+00:00", "kind": "note", "stage": "11_decisions", "summary": "Сессия сопровождения: sfp check 0 ошибок; ближайшие обязательства D-003 до 15.01.2027; ждём подтверждения D-003 руководителем"}
+{"ts": "2026-11-22T18:09:08+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "ca109a5b"}
+{"ts": "2026-11-22T18:16:04+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:16:08+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Show remote commits missing locally", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:16:11+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Merge remote commits", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:39:06+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Show project status, init help, and framing skill", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:09+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Read framing methodology and the brief", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:11+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Read framing methodology", "session": "b6110067"}
+{"ts": "2026-11-22T18:39:13+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Read", "summary": "file_path=/home/user/mgimochallenge/projects/family-connect/sources/brief.md", "session": "b6110067"}
 {"ts": "2026-11-22T19:03:12+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Run project check, list decisions and history", "session": "1c0a56fc"}
 {"ts": "2026-11-22T19:03:28+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "1c0a56fc"}
 {"ts": "2026-11-22T19:03:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Merge remote branch and push again", "session": "1c0a56fc"}
