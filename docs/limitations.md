@@ -43,11 +43,12 @@
 ## Windows
 
 - CLI: `.\sfp <команда>` (обёртка `sfp.cmd`) или `python tools/sfp.py <команда>`.
-- Хуки (`.claude/settings.json`) и MCP-сервер (`.mcp.json`) вызывают `python3`. На Windows такой команды обычно нет
-  или её подменяет заглушка Microsoft Store. Тогда хуки не сработают: не будет статуса при старте, журнала инструментов
-  и защиты доменов. Процесс при этом продолжится — агент сам выполнит `sfp status` по `AGENTS.md`.
-  Исправление: в командах хуков заменить `python3 "…/hooks/X.py"` на `sh "$CLAUDE_PROJECT_DIR/tools/py.sh" "…/hooks/X.py"`
-  (скрипт выбирает рабочий `python3`, `python` или `py`), а в `.mcp.json` — `python3` на `python`.
+- Хуки (`.claude/settings.json`) и MCP-сервер (`.mcp.json`) запускаются через `sh tools/py.sh`. Скрипт берёт первый
+  рабочий `python3`, `python` или `py` версии 3.11+ и отсеивает заглушку Microsoft Store. На Windows нужен `sh` из
+  Git for Windows (его требует и сам Claude Code). Если MCP-сервер не стартует, потому что `sh` не найден в PATH,
+  замените в `.mcp.json` `"command": "sh"` на `"command": "python"` и уберите `tools/py.sh` из `args`.
+  Без MCP агент всё равно работает через CLI `sfp`.
+  `.gitattributes` закрепляет концы строк: `py.sh` и `sfp` — LF, `sfp.cmd` — CRLF.
 - Если кириллица в консоли отображается кракозябрами: `chcp 65001` (обёртка `sfp.cmd` делает это сама).
 
 ## Процесс и среда

@@ -502,3 +502,13 @@
 {"ts": "2026-11-22T17:30:36+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Add .gitattributes, verify line endings and modes", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:30:49+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Test, commit, push, verify fresh clone from GitHub", "session": "cd6ec98c"}
 {"ts": "2026-11-22T17:30:53+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log update", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:31:10+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:54:32+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Edit", "summary": "file_path=/home/user/mgimochallenge/.claude/settings.json", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:54:37+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Validate JSON, switch MCP to launcher, test handshake", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:54:43+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=hook self-test", "session": ""}
+{"ts": "2026-11-22T17:54:43+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Run the three hook commands as configured", "session": "cd6ec98c"}
+{"ts": "2026-11-22T17:54:56+00:00", "kind": "action", "stage": "11_decisions", "summary": "export strategy.md → strategy.html"}
+{"ts": "2026-11-22T17:55:00+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Update docs, run tests, rebuild PDF", "session": "cd6ec98c"}
