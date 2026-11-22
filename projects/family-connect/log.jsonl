@@ -522,3 +522,6 @@
 {"ts": "2026-11-22T18:08:57+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Show history, run checks, list decisions", "session": "ca109a5b"}
 {"ts": "2026-11-22T18:09:02+00:00", "kind": "note", "stage": "11_decisions", "summary": "Сессия сопровождения: sfp check 0 ошибок; ближайшие обязательства D-003 до 15.01.2027; ждём подтверждения D-003 руководителем"}
 {"ts": "2026-11-22T18:09:08+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "ca109a5b"}
+{"ts": "2026-11-22T18:16:04+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Commit and push log changes", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:16:08+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Show remote commits missing locally", "session": "cd6ec98c"}
+{"ts": "2026-11-22T18:16:11+00:00", "kind": "tool", "stage": "11_decisions", "tool": "Bash", "summary": "description=Merge remote commits", "session": "cd6ec98c"}
