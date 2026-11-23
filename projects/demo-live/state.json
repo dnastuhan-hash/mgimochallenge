@@ -1,0 +1,20 @@
+{
+  "stage": "01_framing",
+  "stages": {
+    "01_framing": "waiting_human",
+    "02_materials": "todo",
+    "03_research": "todo",
+    "04_situation": "todo",
+    "05_options": "todo",
+    "06_choice": "todo",
+    "07_strategy": "todo",
+    "08_validation": "todo",
+    "09_plan": "todo",
+    "10_deliverable": "todo",
+    "11_decisions": "todo"
+  },
+  "next_action": "Провести постановку задачи (skill: framing): вопрос, цель, получатель, ограничения, данные.",
+  "open_questions": [],
+  "blocked_on_human": "подтвердить постановку и ответить на 4 вопроса (данные, рамка, family-connect, веб)",
+  "updated": "2026-11-22T18:39:58+00:00"
+}
